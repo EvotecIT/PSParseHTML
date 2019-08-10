@@ -5,5 +5,4 @@ Optimize-ResourceFile -File 'C:\Users\przemyslaw.klys\OneDrive - Evotec\Support\
 Optimize-ResourceFile -File 'C:\Users\przemyslaw.klys\OneDrive - Evotec\Support\GitHub\PSWriteHTML\Resources\JS\HideSection.js' -OutputFile $PSScriptRoot\Output\Example.HideSection.js
 Optimize-ResourceFile -File 'C:\Users\przemyslaw.klys\OneDrive - Evotec\Support\GitHub\PSWriteHTML\Resources\JS\SkeletonTabs.js' -OutputFile $PSScriptRoot\Output\Example.SkeletonTabs.js
 
-
-Optimize-HTML -File 'C:\Users\przemyslaw.klys\OneDrive - Evotec\Support\GitHub\PSWriteHTML\Examples\Example25-Toasts\Example25.html' -OutputFile $PSScriptRoot\Output\Example.ToastsOptimized.html
+Optimize-HTML -File 'C:\Support\GitHub\PSParseHTML\Examples\Output\Example.Toasts.html' -OutputFile $PSScriptRoot\Output\Example.ToastsOptimized.html

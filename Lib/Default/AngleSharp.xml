@@ -552,6 +552,16 @@
             <param name="action">The action to enqueue.</param>
             <param name="priority">The priority of the item.</param>
         </member>
+        <member name="M:AngleSharp.Browser.EventLoopExtensions.EnqueueAsync``1(AngleSharp.Browser.IEventLoop,System.Func{System.Threading.CancellationToken,``0},AngleSharp.Browser.TaskPriority)">
+            <summary>
+            Enqueues another function with respecting the async nature.
+            Exceptions will be emitted respectively.
+            </summary>
+            <param name="loop">The loop to extend.</param>
+            <param name="action">The action to enqueue.</param>
+            <param name="priority">The priority of the item.</param>
+            <returns>A task that is completed when the action has been invoked.</returns>
+        </member>
         <member name="T:AngleSharp.Browser.ICommand">
             <summary>
             Represents a command that can be executed from the document.
@@ -666,6 +676,29 @@
             Handles the content of the given HTML meta element.
             </summary>
             <param name="element">The meta element.</param>
+        </member>
+        <member name="T:AngleSharp.Browser.INavigationHandler">
+            <summary>
+            Defines a handler for navigation requests.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Browser.INavigationHandler.SupportsProtocol(System.String)">
+            <summary>
+            Determines if the given protocol is supported by
+            the current handler.
+            </summary>
+            <param name="protocol">The protocol of the navigation target.</param>
+            <returns>True if the protocol is supported, otherwise false.</returns>
+        </member>
+        <member name="M:AngleSharp.Browser.INavigationHandler.NavigateAsync(AngleSharp.Io.DocumentRequest,System.Threading.CancellationToken)">
+            <summary>
+            Performs the navigation with respect to a given request.
+            </summary>
+            <param name="request">The navigation request.</param>
+            <param name="token">The cancellation token.</param>
+            <returns>
+            The task yielding a document representing the navigation result.
+            </returns>
         </member>
         <member name="T:AngleSharp.Browser.IParser">
             <summary>
@@ -830,11 +863,6 @@
             This flag allows the sandboxed content to run presentational content.
             </summary>
         </member>
-        <member name="T:AngleSharp.Browser.TaskEventLoop">
-            <summary>
-            The default event loop.
-            </summary>
-        </member>
         <member name="T:AngleSharp.Browser.TaskPriority">
             <summary>
             Describes the various task priorities.
@@ -953,7 +981,7 @@
             Opens a new document without any content in the given context.
             </summary>
             <param name="context">The browsing context to use.</param>
-            <param name="url">The optional base URL of the document.</param>
+            <param name="url">The optional base URL of the document. By default "http://localhost/".</param>
             <param name="cancellation">The cancellation token (optional)</param>
             <returns>The new, yet empty, document.</returns>
         </member>
@@ -1007,6 +1035,17 @@
             <param name="cancellation">The cancellation token (optional)</param>
             <returns>The task that creates the document.</returns>
         </member>
+        <member name="M:AngleSharp.BrowsingContextExtensions.NavigateToAsync(AngleSharp.IBrowsingContext,AngleSharp.Io.DocumentRequest,System.Threading.CancellationToken)">
+            <summary>
+            Plan to navigate to an action using the specified method with the given
+            entity body of the mime type.
+            http://www.w3.org/html/wg/drafts/html/master/forms.html#plan-to-navigate
+            </summary>
+            <param name="context">The browsing context.</param>
+            <param name="request">The request to issue.</param>
+            <param name="cancel"></param>
+            <returns>A task that will eventually result in a new document.</returns>
+        </member>
         <member name="M:AngleSharp.BrowsingContextExtensions.NavigateTo(AngleSharp.IBrowsingContext,AngleSharp.Dom.IDocument)">
             <summary>
             Navigates to the given document. Includes the document in the
@@ -1014,6 +1053,14 @@
             </summary>
             <param name="context">The browsing context to use.</param>
             <param name="document">The new document.</param>
+        </member>
+        <member name="M:AngleSharp.BrowsingContextExtensions.GetNavigationHandler(AngleSharp.IBrowsingContext,AngleSharp.Url)">
+            <summary>
+            Gets the navigation handler that supports the provided protocol.
+            </summary>
+            <param name="context">The browsing context to use.</param>
+            <param name="url">The URL to navigate to.</param>
+            <returns>The found navigation handler, if any.</returns>
         </member>
         <member name="M:AngleSharp.BrowsingContextExtensions.GetDefaultEncoding(AngleSharp.IBrowsingContext)">
             <summary>
@@ -1151,6 +1198,14 @@
             <param name="data">The data to transport.</param>
             <returns>The task with the response to the event.</returns>
         </member>
+        <member name="M:AngleSharp.BrowsingContextExtensions.ResolveTargetContext(AngleSharp.IBrowsingContext,System.String)">
+            <summary>
+            Resolves the given target context.
+            </summary>
+            <param name="context">The current context.</param>
+            <param name="target">The desired target frame.</param>
+            <returns>The target context.</returns>
+        </member>
         <member name="M:AngleSharp.BrowsingContextExtensions.CreateChildFor(AngleSharp.IBrowsingContext,System.String)">
             <summary>
             Creates the specified target browsing context.
@@ -1206,6 +1261,11 @@
         <member name="P:AngleSharp.Common.BaseTokenizer.StringBuffer">
             <summary>
             Gets the allocated string buffer.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Common.BaseTokenizer.IsNormalized">
+            <summary>
+            Gets if the current index has been normalized (CRLF -> LF).
             </summary>
         </member>
         <member name="M:AngleSharp.Common.BaseTokenizer.FlushBuffer">
@@ -1662,7 +1722,7 @@
             <param name="configuration">The configuration to extend.</param>
             <returns>The new instance with the service.</returns>
         </member>
-        <member name="M:AngleSharp.ConfigurationExtensions.WithCookies(AngleSharp.IConfiguration)">
+        <member name="M:AngleSharp.ConfigurationExtensions.WithDefaultCookies(AngleSharp.IConfiguration)">
             <summary>
             Registers the default cookie service if no other cookie service has
             been registered yet.
@@ -3066,6 +3126,16 @@
             The first-letter pseudo element.
             </summary>
         </member>
+        <member name="F:AngleSharp.Css.PseudoElementNames.FootnoteCall">
+            <summary>
+            The footnote-call pseudo element.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Css.PseudoElementNames.FootnoteMarker">
+            <summary>
+            The footnote-marker pseudo element.
+            </summary>
+        </member>
         <member name="F:AngleSharp.Css.PseudoElementNames.Content">
             <summary>
             The content pseudo element.
@@ -3290,6 +3360,26 @@
         <member name="F:AngleSharp.Dom.AttributeNames.Shape">
             <summary>
             The shape attribute.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Dom.AttributeNames.FormAction">
+            <summary>
+            The formaction attribute.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Dom.AttributeNames.FormMethod">
+            <summary>
+            The formmethod attribute.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Dom.AttributeNames.FormTarget">
+            <summary>
+            The formtarget attribute.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Dom.AttributeNames.FormEncType">
+            <summary>
+            The formenctype attribute.
             </summary>
         </member>
         <member name="F:AngleSharp.Dom.AttributeNames.FormNoValidate">
@@ -4070,6 +4160,26 @@
             The document that hosts the configuration.
             </param>
             <param name="action">The action that should be invoked.</param>
+        </member>
+        <member name="M:AngleSharp.Dom.DocumentExtensions.QueueTaskAsync(AngleSharp.Dom.Document,System.Action{System.Threading.CancellationToken})">
+            <summary>
+            Queues an action in the event loop of the document,
+            which can be awaited.
+            </summary>
+            <param name="document">
+            The document that hosts the configuration.
+            </param>
+            <param name="action">The action that should be invoked.</param>
+        </member>
+        <member name="M:AngleSharp.Dom.DocumentExtensions.QueueTaskAsync``1(AngleSharp.Dom.Document,System.Func{System.Threading.CancellationToken,``0})">
+            <summary>
+            Queues a function in the event loop of the document,
+            which can be awaited with the result returned.
+            </summary>
+            <param name="document">
+            The document that hosts the configuration.
+            </param>
+            <param name="func">The function that should be invoked.</param>
         </member>
         <member name="M:AngleSharp.Dom.DocumentExtensions.QueueMutation(AngleSharp.Dom.Document,AngleSharp.Dom.MutationRecord)">
             <summary>
@@ -4885,16 +4995,6 @@
             <param name="img">The element to use.</param>
             <returns>The possibly valid URL to the right candidate.</returns>
         </member>
-        <member name="M:AngleSharp.Dom.ElementExtensions.NavigateToAsync(AngleSharp.Dom.Element,AngleSharp.Io.DocumentRequest)">
-            <summary>
-            Plan to navigate to an action using the specified method with the given
-            entity body of the mime type.
-            http://www.w3.org/html/wg/drafts/html/master/forms.html#plan-to-navigate
-            </summary>
-            <param name="element">The element to navigate from.</param>
-            <param name="request">The request to issue.</param>
-            <returns>A task that will eventually result in a new document.</returns>
-        </member>
         <member name="M:AngleSharp.Dom.ElementExtensions.GetOwnAttribute(AngleSharp.Dom.Element,System.String)">
             <summary>
             Faster way of getting the (known) attribute.
@@ -4918,6 +5018,11 @@
             <param name="element">The element to host the attribute.</param>
             <param name="name">The name of the attribute.</param>
             <returns>The attribute's absolute url value.</returns>
+        </member>
+        <member name="M:AngleSharp.Dom.ElementExtensions.IsBooleanAttribute(AngleSharp.Dom.IElement,System.String)">
+            <summary>
+            Checks if the given attribute name corresponds to a boolean attribute.
+            </summary>
         </member>
         <member name="M:AngleSharp.Dom.ElementExtensions.GetBoolAttribute(AngleSharp.Dom.Element,System.String)">
             <summary>
@@ -8051,6 +8156,11 @@
             <param name="oldChild">The child to be removed.</param>
             <returns>The old node, if any.</returns>
         </member>
+        <member name="P:AngleSharp.Dom.INode.Flags">
+            <summary>
+            Gets the associated node flags.
+            </summary>
+        </member>
         <member name="T:AngleSharp.Dom.INodeIterator">
             <summary>
             The NodeIterator interface represents an iterator over the members of a
@@ -8759,9 +8869,6 @@
         <member name="M:AngleSharp.Dom.Document.GetElementsByTagName(System.String,System.String)">
             <inheritdoc />
         </member>
-        <member name="M:AngleSharp.Dom.Document.ToHtml(System.IO.TextWriter,AngleSharp.IMarkupFormatter)">
-            <inheritdoc />
-        </member>
         <member name="M:AngleSharp.Dom.Document.HasFocus">
             <inheritdoc />
         </member>
@@ -8928,14 +9035,6 @@
             <summary>
             Removes the current element from the parent.
             </summary>
-        </member>
-        <member name="M:AngleSharp.Dom.DocumentType.ToHtml(System.IO.TextWriter,AngleSharp.IMarkupFormatter)">
-            <summary>
-            Returns an HTML-code representation of the node.
-            </summary>
-            <param name="writer">The serialization output target.</param>
-            <param name="formatter">The formatter to use.</param>
-            <returns>A string containing the HTML code.</returns>
         </member>
         <member name="M:AngleSharp.Dom.DocumentType.Clone(AngleSharp.Dom.Document,System.Boolean)">
             <inheritdoc />
@@ -9105,9 +9204,6 @@
             <inheritdoc />
         </member>
         <member name="M:AngleSharp.Dom.Element.Insert(AngleSharp.Dom.AdjacentPosition,System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:AngleSharp.Dom.Element.ToHtml(System.IO.TextWriter,AngleSharp.IMarkupFormatter)">
             <inheritdoc />
         </member>
         <member name="M:AngleSharp.Dom.Element.Clone(AngleSharp.Dom.Document,System.Boolean)">
@@ -9281,6 +9377,9 @@
             </summary>
         </member>
         <member name="M:AngleSharp.Dom.Node.#ctor(AngleSharp.Dom.Document,System.String,AngleSharp.Dom.NodeType,AngleSharp.Dom.NodeFlags)">
+            <inheritdoc />
+        </member>
+        <member name="P:AngleSharp.Dom.Node.Flags">
             <inheritdoc />
         </member>
         <member name="P:AngleSharp.Dom.Node.HasChildNodes">
@@ -10614,12 +10713,6 @@
             <summary>
             Triggers the execution if the queue is not-empty.
             </summary>
-        </member>
-        <member name="M:AngleSharp.Dom.MutationObserver.TriggerWith(AngleSharp.Dom.IMutationRecord[])">
-            <summary>
-            Triggers the execution with the provided records.
-            </summary>
-            <param name="records">The records to supply as argument.</param>
         </member>
         <member name="M:AngleSharp.Dom.MutationObserver.ResolveOptions(AngleSharp.Dom.INode)">
             <summary>
@@ -12540,6 +12633,22 @@
             </summary>
             <param name="markup">The markup node to format.</param>
             <param name="writer">The output target of the serialization.</param>
+        </member>
+        <member name="M:AngleSharp.FormatExtensions.Minify(AngleSharp.IMarkupFormattable)">
+            <summary>
+            Returns a minified serialization of the node guided by the
+            MinifyMarkupFormatter with the default options.
+            </summary>
+            <param name="markup">The markup node to format.</param>
+            <returns>The source code snippet.</returns>
+        </member>
+        <member name="M:AngleSharp.FormatExtensions.Prettify(AngleSharp.IMarkupFormattable)">
+            <summary>
+            Returns a prettified serialization of the node guided by the
+            PrettyMarkupFormatter with the default options.
+            </summary>
+            <param name="markup">The markup node to format.</param>
+            <returns>The source code snippet.</returns>
         </member>
         <member name="T:AngleSharp.Html.DefaultInputTypeFactory">
             <summary>
@@ -17863,6 +17972,26 @@
             </summary>
             <returns>The enumerator.</returns>
         </member>
+        <member name="T:AngleSharp.Html.FormMethodNames">
+            <summary>
+            The collection of (known / used) form method names.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Html.FormMethodNames.Get">
+            <summary>
+            The get method.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Html.FormMethodNames.Post">
+            <summary>
+            The post method.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Html.FormMethodNames.Dialog">
+            <summary>
+            The dialog method.
+            </summary>
+        </member>
         <member name="T:AngleSharp.Html.Forms.FileDataSetEntry">
             <summary>
             A file entry in a form.
@@ -18480,6 +18609,43 @@
         <member name="M:AngleSharp.Html.LinkRels.ImportLinkRelation.LoadAsync">
             <summary>
             See http://www.w3.org/TR/html-imports/#dfn-import-request.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Html.MinifyMarkupFormatter">
+            <summary>
+            Represents the an HTML5 markup formatter with a normalization scheme.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.MinifyMarkupFormatter.PreservedTags">
+            <summary>
+            Gets or sets the tags that should have preserved white-space.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.MinifyMarkupFormatter.ShouldKeepStandardElements">
+            <summary>
+            Gets or sets if the automatically inserted standard elements
+            (html, head, body) should be kept despite adding no value.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.MinifyMarkupFormatter.ShouldKeepComments">
+            <summary>
+            Gets or sets if comments should be preserved.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.MinifyMarkupFormatter.ShouldKeepAttributeQuotes">
+            <summary>
+            Gets or sets if quotes of an attribute should be kept despite
+            not needing them.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.MinifyMarkupFormatter.ShouldKeepEmptyAttributes">
+            <summary>
+            Gets or sets if empty (zero-length) attributes should be kept.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.MinifyMarkupFormatter.ShouldKeepImpliedEndTag">
+            <summary>
+            Gets or sets if implied end tags (e.g., "/li") should be preserved.
             </summary>
         </member>
         <member name="T:AngleSharp.Html.Parser.HtmlDomBuilder">
@@ -19718,6 +19884,15 @@
             should be kept on the elements in form of their tokens.
             </summary>
         </member>
+        <member name="P:AngleSharp.Html.Parser.HtmlParserOptions.IsNotConsumingCharacterReferences">
+            <summary>
+            Gets or sets if the parsing of character references should
+            be avoided.
+            Note: With this option there is no way to determine from
+            AngleSharp what character references have been fully valid
+            vs. invalid.
+            </summary>
+        </member>
         <member name="P:AngleSharp.Html.Parser.HtmlParserOptions.OnCreated">
             <summary>
             Gets or sets the callback once a new element was created.
@@ -19744,6 +19919,11 @@
         <member name="P:AngleSharp.Html.Parser.HtmlTokenizer.IsAcceptingCharacterData">
             <summary>
             Gets or sets if CDATA sections are accepted.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Html.Parser.HtmlTokenizer.IsNotConsumingCharacterReferences">
+            <summary>
+            Gets or sets if character references should be avoided.
             </summary>
         </member>
         <member name="P:AngleSharp.Html.Parser.HtmlTokenizer.State">
@@ -23462,11 +23642,17 @@
             Transport object for running scripts.
             </summary>
         </member>
-        <member name="M:AngleSharp.Scripting.ScriptOptions.#ctor(AngleSharp.Dom.IDocument)">
+        <member name="M:AngleSharp.Scripting.ScriptOptions.#ctor(AngleSharp.Dom.IDocument,AngleSharp.Browser.IEventLoop)">
             <summary>
             Creates new script options for the given document.
             </summary>
             <param name="document">The document to use.</param>
+            <param name="loop">The event loop to use.</param>
+        </member>
+        <member name="P:AngleSharp.Scripting.ScriptOptions.EventLoop">
+            <summary>
+            Gets the event loop for the executing script.
+            </summary>
         </member>
         <member name="P:AngleSharp.Scripting.ScriptOptions.Document">
             <summary>
@@ -24130,7 +24316,16 @@
             </summary>
             <param name="encType">The string to convert.</param>
             <returns>
-            The encoding type with fallback application/x-www-form-urlencoded.
+            The valid encoding type string or null.
+            </returns>
+        </member>
+        <member name="M:AngleSharp.Text.StringExtensions.ToFormMethod(System.String)">
+            <summary>
+            Converts the current string to one of the form methods.
+            </summary>
+            <param name="method">The string to convert.</param>
+            <returns>
+            The valid form method string or null.
             </returns>
         </member>
         <member name="T:AngleSharp.Text.StringSource">
