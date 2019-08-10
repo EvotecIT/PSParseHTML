@@ -1,0 +1,621 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AngleSharp.Js</name>
+    </assembly>
+    <members>
+        <member name="T:AngleSharp.Js.Dom.DomParser">
+            <summary>
+            A way for JavaScript applications to access the parser.
+            See: https://w3c.github.io/DOM-Parsing/#the-domparser-interface
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.DomParser.#ctor(AngleSharp.Dom.IWindow)">
+            <summary>
+            Creates a new DOMParser instance.
+            </summary>
+            <param name="window">The window to host the parser.</param>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.DomParser.Parse(System.String,System.String)">
+            <summary>
+            Parses the given string for the given type. Throws a not supported
+            exception if the type is not supported.
+            </summary>
+            <param name="str">The content to parse.</param>
+            <param name="type">The type of the target to parse to.</param>
+            <returns>The document of the given type.</returns>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.ElementPseudoExtensions">
+            <summary>
+            A set of stub implementations.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetScrollLeft(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the scrollLeft property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetScrollTop(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the scrollTop property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetScrollWidth(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the scrollWidth property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetScrollHeight(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the scrollHeight property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetClientLeft(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the clientLeft property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetClientTop(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the clientTop property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetClientWidth(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the clientWidth property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetClientHeight(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the clientHeight property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetOffsetLeft(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the offsetLeft property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetOffsetTop(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the offsetTop property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetOffsetWidth(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the offsetWidth property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.GetOffsetHeight(AngleSharp.Dom.IElement)">
+            <summary>
+            Getter for the offsetHeight property.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.AddFocusIn(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Adds the focus in event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.RemoveFocusIn(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Removes the focus in event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.AddFocusOut(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Adds the focus out event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.RemoveFocusOut(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Removes the focus out event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.AddUnload(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Adds the unload event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.RemoveUnload(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Removes the unload event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.AddContextMenu(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Adds the contextmenu event.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.ElementPseudoExtensions.RemoveContextMenu(AngleSharp.Dom.IElement,AngleSharp.Dom.DomEventHandler)">
+            <summary>
+            Removes the contextmenu event.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.RequesterState">
+            <summary>
+            Defines the states of the requester.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.RequesterState.Unsent">
+            <summary>
+            Nothing has been sent yet.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.RequesterState.Opened">
+            <summary>
+            The communication channel is open.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.RequesterState.HeadersReceived">
+            <summary>
+            The response headers have been received.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.RequesterState.Loading">
+            <summary>
+            The body is still incoming.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.RequesterState.Done">
+            <summary>
+            The response has been received.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.Screen">
+            <summary>
+            Represents information about the screen of the output device.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.Screen.AvailableWidth">
+            <summary>
+            Gets the available width of the rendering surface of the output
+            device, in CSS pixels.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.Screen.AvailableHeight">
+            <summary>
+            Gets the available height of the rendering surface of the output
+            device, in CSS pixels.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.Screen.Width">
+            <summary>
+            Gets the width of the output device, in CSS pixels.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.Screen.Height">
+            <summary>
+            Gets the height of the output device, in CSS pixels.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.Screen.ColorDepth">
+            <summary>
+            Gets the value 24 - by specification.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.Screen.PixelDepth">
+            <summary>
+            Gets the value 24 - by specification.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.WindowBase64">
+            <summary>
+            Represents the WindowBase64 auxiliary interface implemented by Window.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.WindowBase64.Btoa(AngleSharp.Dom.IWindow,System.String)">
+            <summary>
+            Takes the input data, in the form of a Unicode string containing
+            only characters in the range U+0000 to U+00FF, each representing a
+            binary byte with values 0x00 to 0xFF respectively, and converts it
+            to its base64 representation, which it returns.
+            </summary>
+            <param name="window">The host.</param>
+            <param name="data">String of bytes.</param>
+            <returns>Base-64 representation.</returns>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.WindowBase64.Atob(AngleSharp.Dom.IWindow,System.String)">
+            <summary>
+            Takes the input data, in the form of a Unicode string containing
+            base64-encoded binary data, decodes it, and returns a string
+            consisting of characters in the range U+0000 to U+00FF, each
+            representing a binary byte with values 0x00 to 0xFF respectively,
+            corresponding to that binary data.
+            </summary>
+            <param name="window">The host.</param>
+            <param name="data">Base-64 representation.</param>
+            <returns>String of bytes.</returns>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.XmlHttpRequest">
+            <summary>
+            Defines the XHR. For more information see:
+            https://xhr.spec.whatwg.org/#interface-xmlhttprequest
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.#ctor(AngleSharp.Dom.IWindow)">
+            <summary>
+            Creates a new XHR.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.HasResponseHeaders">
+            <summary>
+            Gets if response headers are accessible.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequest.ReadyStateChanged">
+            <summary>
+            Adds or removes the handler for the readystatechange event.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.ReadyState">
+            <summary>
+            Gets the current ready state.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.Timeout">
+            <summary>
+            Gets or sets the timeout of the request in milliseconds.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.Upload">
+            <summary>
+            Gets the associated upload process, if any.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.WithCredentials">
+            <summary>
+            Gets or sets if credentials should be used for the request.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.ResponseType">
+            <summary>
+            Gets the determined response type.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.ResponseUrl">
+            <summary>
+            Gets the url of the response.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.StatusCode">
+            <summary>
+            Gets the status code of the response.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.StatusText">
+            <summary>
+            Gets the status text of the response.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.Response">
+            <summary>
+            Gets the resulting response object.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.ResponseText">
+            <summary>
+            Gets the body text of the response.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Js.Dom.XmlHttpRequest.ResponseXml">
+            <summary>
+            Gets the XML document of the response, if any.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.Abort">
+            <summary>
+            Aborts the request.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.Open(System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Opens a new request with the provided method and URL.
+            </summary>
+            <param name="method">The method to use.</param>
+            <param name="url">The URL to send to request to.</param>
+            <param name="async">Should the request be send async?</param>
+            <param name="username">Should a username be used?</param>
+            <param name="password">Should a password be used?</param>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.Send(System.Object)">
+            <summary>
+            Sends the created request with the potentially provided object.
+            </summary>
+            <param name="body">The body to send (e.g., for forms POST).</param>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.SetRequestHeader(System.String,System.String)">
+            <summary>
+            Sets the request header.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <param name="value">The value of the field.</param>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.GetResponseHeader(System.String)">
+            <summary>
+            Gets the response header.
+            </summary>
+            <param name="name">The name of the field.</param>
+            <returns>The value of the field.</returns>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.GetAllResponseHeaders">
+            <summary>
+            Gets all response headers.
+            </summary>
+            <returns>The name and values.</returns>
+        </member>
+        <member name="M:AngleSharp.Js.Dom.XmlHttpRequest.OverrideMimeType(System.String)">
+            <summary>
+            Overrides the returned mime-type to force a specific mode.
+            </summary>
+            <param name="mime">The mime-type to use.</param>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.XmlHttpRequestEventTarget">
+            <summary>
+            Represents the basis for the XHR.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.Start">
+            <summary>
+            Adds or removes the handler for the loadstart event.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.Progress">
+            <summary>
+            Adds or removes the handler for the progress event.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.Aborted">
+            <summary>
+            Adds or removes the handler for the abort event.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.Error">
+            <summary>
+            Adds or removes the handler for the error event.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.Loaded">
+            <summary>
+            Adds or removes the handler for the load event.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.Timedout">
+            <summary>
+            Adds or removes the handler for the timeout event.
+            </summary>
+        </member>
+        <member name="E:AngleSharp.Js.Dom.XmlHttpRequestEventTarget.End">
+            <summary>
+            Adds or removes the handler for the loadend event.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.XmlHttpRequestResponseType">
+            <summary>
+            The various response type options.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.XmlHttpRequestResponseType.None">
+            <summary>
+            No response given.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.XmlHttpRequestResponseType.ArrayBuffer">
+            <summary>
+            A plain array buffer.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.XmlHttpRequestResponseType.Blob">
+            <summary>
+            Some binary large object.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.XmlHttpRequestResponseType.Document">
+            <summary>
+            An (XML) document.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.XmlHttpRequestResponseType.Json">
+            <summary>
+            A JSON object.
+            </summary>
+        </member>
+        <member name="F:AngleSharp.Js.Dom.XmlHttpRequestResponseType.Text">
+            <summary>
+            Plain text.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.Dom.XmlHttpRequestUpload">
+            <summary>
+            Specialization for requesting upload information.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.IConsoleLogger">
+            <summary>
+            Represents a console logger.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.IConsoleLogger.Log(System.Object[])">
+            <summary>
+            Logs the given values.
+            </summary>
+            <param name="values">The values to log.</param>
+        </member>
+        <member name="T:AngleSharp.Js.JsApiExtensions">
+            <summary>
+            Useful extensions for the DOM.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.JsApiExtensions.ExecuteScript(AngleSharp.Dom.IDocument,System.String)">
+            <summary>
+            Executes the given script code in the context of the document.
+            </summary>
+            <param name="document">The document as context.</param>
+            <param name="scriptCode">The script to run.</param>
+            <returns>The result of running the script, if any.</returns>
+        </member>
+        <member name="T:AngleSharp.Js.JsEventLoop">
+            <summary>
+            A thread-based event loop implementation.
+            </summary>
+        </member>
+        <member name="T:AngleSharp.Js.JsNavigationHandler">
+            <summary>
+            Represents a handler for javascript: URLs.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Js.JsNavigationHandler.#ctor(AngleSharp.Scripting.JsScriptingService)">
+            <summary>
+            Creates a new navigation handler for javascript: URLs.
+            </summary>
+            <param name="service">The underlying scripting service.</param>
+        </member>
+        <member name="M:AngleSharp.Js.JsNavigationHandler.NavigateAsync(AngleSharp.Io.DocumentRequest,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:AngleSharp.Js.JsNavigationHandler.SupportsProtocol(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:AngleSharp.JsConfigurationExtensions">
+            <summary>
+            Additional extensions for JavaScript scripting.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.JsConfigurationExtensions.WithConsoleLogger(AngleSharp.IConfiguration,System.Func{AngleSharp.IBrowsingContext,AngleSharp.Js.IConsoleLogger})">
+            <summary>
+            Includes a service to create a new console logger for the given context.
+            </summary>
+            <param name="configuration">The configuration to use.</param>
+            <param name="createLogger">The delegate to create a new logger.</param>
+            <returns>The new configuration.</returns>
+        </member>
+        <member name="M:AngleSharp.JsConfigurationExtensions.WithEventLoop(AngleSharp.IConfiguration)">
+            <summary>
+            Includes the thread-based JS event loop in the given context.
+            </summary>
+            <param name="configuration">The configuration to use.</param>
+            <returns>The new configuration.</returns>
+        </member>
+        <member name="M:AngleSharp.JsConfigurationExtensions.WithEventLoop(AngleSharp.IConfiguration,AngleSharp.Browser.IEventLoop)">
+            <summary>
+            Includes some event loop in the given context.
+            </summary>
+            <param name="configuration">The configuration to use.</param>
+            <param name="loop">The existing loop to use.</param>
+            <returns>The new configuration.</returns>
+        </member>
+        <member name="M:AngleSharp.JsConfigurationExtensions.WithEventLoop(AngleSharp.IConfiguration,System.Func{AngleSharp.IBrowsingContext,AngleSharp.Browser.IEventLoop})">
+            <summary>
+            Includes some lazy initialized event loop in the given context.
+            </summary>
+            <param name="configuration">The configuration to use.</param>
+            <param name="creator">The constructor function for the loop.</param>
+            <returns>The new configuration.</returns>
+        </member>
+        <member name="M:AngleSharp.JsConfigurationExtensions.WithJs(AngleSharp.IConfiguration)">
+            <summary>
+            Sets scripting to true, registers the JavaScript engine and returns
+            a new configuration with the scripting service and possible
+            auxiliary services, if not yet registered.
+            </summary>
+            <param name="configuration">The configuration to use.</param>
+            <returns>The new configuration.</returns>
+        </member>
+        <member name="T:AngleSharp.Dom.JsDocumentExtensions">
+            <summary>
+            A set of extensions for interacting with the document.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Dom.JsDocumentExtensions.Then(AngleSharp.Dom.IDocument,System.Action{AngleSharp.Dom.IDocument})">
+            <summary>
+            Enqueues the given action as a normal task to the document,
+            thus ensuring it runs after any script-related actions.
+            </summary>
+            <param name="document">The document to extend.</param>
+            <param name="action">The action on the document to perform.</param>
+            <returns>A task that is finished when the enqueued task completed.</returns>
+        </member>
+        <member name="M:AngleSharp.Dom.JsDocumentExtensions.Then(AngleSharp.Dom.IDocument,System.String)">
+            <summary>
+            Enqueues the given JavaScript code as a normal task to the document,
+            thus ensuring it runs after any script-related actions.
+            </summary>
+            <param name="document">The document to extend.</param>
+            <param name="jsSource">The JavaScript action to perform.</param>
+            <returns>A task that is finished when the enqueued task completed.</returns>
+        </member>
+        <member name="M:AngleSharp.Dom.JsDocumentExtensions.Then(System.Threading.Tasks.Task{AngleSharp.Dom.IDocument},System.Action{AngleSharp.Dom.IDocument})">
+            <summary>
+            Enqueues the given action as a normal task to the document,
+            thus ensuring it runs after any script-related actions.
+            </summary>
+            <param name="documentTask">The soon available document.</param>
+            <param name="action">The action on the document to perform.</param>
+            <returns>A task that is finished when the enqueued task completed.</returns>
+        </member>
+        <member name="M:AngleSharp.Dom.JsDocumentExtensions.Then(System.Threading.Tasks.Task{AngleSharp.Dom.IDocument},System.String)">
+            <summary>
+            Enqueues the given JavaScript code as a normal task to the document,
+            thus ensuring it runs after any script-related actions.
+            </summary>
+            <param name="documentTask">The soon available document.</param>
+            <param name="jsSource">The JavaScript action to perform.</param>
+            <returns>A task that is finished when the enqueued task completed.</returns>
+        </member>
+        <member name="M:AngleSharp.Dom.JsDocumentExtensions.WhenStable(AngleSharp.Dom.IDocument)">
+            <summary>
+            Waits until all currently queued tasks finished.
+            </summary>
+            <param name="document">The available document.</param>
+            <returns>A task that is finished when the enqueued tasks completed.</returns>
+        </member>
+        <member name="M:AngleSharp.Dom.JsDocumentExtensions.WhenStable(System.Threading.Tasks.Task{AngleSharp.Dom.IDocument})">
+            <summary>
+            Waits until all initially queued tasks finished.
+            </summary>
+            <param name="documentTask">The soon available document.</param>
+            <returns>A task that is finished when the enqueued tasks completed.</returns>
+        </member>
+        <member name="T:AngleSharp.Scripting.JsScriptingService">
+            <summary>
+            The JavaScript engine.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Scripting.JsScriptingService.#ctor">
+            <summary>
+            Creates a new JavaScript engine.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Scripting.JsScriptingService.External">
+            <summary>
+            Gets the external assignments.
+            </summary>
+        </member>
+        <member name="P:AngleSharp.Scripting.JsScriptingService.Type">
+            <summary>
+            Gets the engine's mime-type.
+            </summary>
+        </member>
+        <member name="M:AngleSharp.Scripting.JsScriptingService.GetOrCreateJint(AngleSharp.Dom.IDocument)">
+            <summary>
+            Gets the associated Jint engine or creates it.
+            </summary>
+            <param name="document">The current document.</param>
+            <returns>The engine object.</returns>
+        </member>
+        <member name="M:AngleSharp.Scripting.JsScriptingService.EvaluateScriptAsync(AngleSharp.Io.IResponse,AngleSharp.Scripting.ScriptOptions,System.Threading.CancellationToken)">
+            <summary>
+            Evaluates the response asynchronously.
+            </summary>
+            <param name="response">The response to parse.</param>
+            <param name="options">The options to consider.</param>
+            <param name="cancel">The cancellation token to transport.</param>
+        </member>
+        <member name="M:AngleSharp.Scripting.JsScriptingService.EvaluateScript(AngleSharp.Dom.IDocument,System.String)">
+            <summary>
+            Evaluates the given script source in the engine of the document.
+            </summary>
+            <param name="document">The context of the evaluation.</param>
+            <param name="source">The source of the script.</param>
+            <returns>The result of the evaluation.</returns>
+        </member>
+    </members>
+</doc>
