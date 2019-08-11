@@ -20,7 +20,7 @@
         return
     }
 
-    $Output = Format-InternalCSS -Content $Content
+    $Output = Convert-InternalHTMLToText -Content $Content
 
     # Output to file or to text
     if ($OutputFile) {

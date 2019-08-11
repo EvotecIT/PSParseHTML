@@ -3,5 +3,9 @@
     param(
         [string] $Content
     )
-    [NUglify.Uglify]::Html($Content).Code
+
+    $Settings = [NUglify.Html.HtmlSettings]::new()
+    $Settings.RemoveOptionalTags = $false
+
+    [NUglify.Uglify]::Html($HTMLContentFormatted, $Settings).Code
 }

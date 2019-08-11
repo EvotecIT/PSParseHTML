@@ -28,7 +28,9 @@
     [bool] $ShouldKeepStandardElements = $true
 
     # Do magic
-    $Output = Optimize-InternalHTML -Content $Content -ShouldKeepAttributeQuotes $ShouldKeepAttributeQuotes -ShouldKeepComments $ShouldKeepComments -ShouldKeepEmptyAttributes $ShouldKeepEmptyAttributes -ShouldKeepImpliedEndTag $ShouldKeepImpliedEndTag -ShouldKeepStandardElements $ShouldKeepStandardElements
+    #$Output = Optimize-InternalHTML -Content $Content -ShouldKeepAttributeQuotes $ShouldKeepAttributeQuotes -ShouldKeepComments $ShouldKeepComments -ShouldKeepEmptyAttributes $ShouldKeepEmptyAttributes -ShouldKeepImpliedEndTag $ShouldKeepImpliedEndTag -ShouldKeepStandardElements $ShouldKeepStandardElements
+    $Output = Optimize-InternalUglifyHTML -Content $Content
+
 
     # Output to file or to text
     if ($OutputFile) {

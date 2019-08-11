@@ -20,6 +20,7 @@ Foreach ($Import in @($Assembly)) {
     try {
         Add-Type -Path $Import.Fullname -ErrorAction Stop
     } catch [System.Reflection.ReflectionTypeLoadException] {
+        Write-Warning -Message "[x] Importing failed: $($Import.FullName)"
         Write-Warning -Message "[x] Message: $($_.Exception.Message)"
         #Write-Warning -Message "StackTrace: $($_.Exception.StackTrace)"
         foreach ($_ in $($_.Exception.LoaderExceptions)) {

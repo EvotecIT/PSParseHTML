@@ -51,6 +51,4 @@ $HTMLContentFormatted = @"
 </html>
 "@
 
-$Minimized = Optimize-HTML -Content $HTMLContentFormatted
-$Minimized
-Format-HTML -Content $Minimized
+Convert-HTMLToText -Content $HTMLContentFormatted
