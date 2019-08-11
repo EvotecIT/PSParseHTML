@@ -61,4 +61,4 @@ This module uses several external libraries to do it's work. Authors of those li
 
 + [YUICompressor.NET](https://github.com/YUICompressor-NET/YUICompressor.NET)
 + [AngleSharp](https://github.com/AngleSharp/AngleSharp)
-+ [jsBeautifier.net](https://github.com/rhoney/jsBeautifier.net)
++ [Jsbeautifier](https://github.com/denis-ivanov/Jsbeautifier)
