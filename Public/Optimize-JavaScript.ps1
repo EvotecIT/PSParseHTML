@@ -1,28 +1,26 @@
-﻿function Format-HTML {
+﻿function Optimize-JavaScript {
     [CmdletBinding()]
     param(
         [string] $File,
         [string] $OutputFile,
         [string] $Content
     )
-
     # Load from file or text
     if ($File) {
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Format-HTML - File doesnt exists'
+            Write-Warning 'Optimize-JavaScript - File doesnt exists'
             return
         }
     } elseif ($Content) {
 
     } else {
-        Write-Warning 'Format-HTML - No choice file or Content. Termninated.'
+        Write-Warning 'Optimize-JavaScript - No choice file or Content. Termninated.'
         return
     }
 
-    # Do the magic
-    $Output = Format-InternalHTML -Content $Content
+    $Output = Optimize-InternalYahoo -Content $Content
 
     # Output to file or to text
     if ($OutputFile) {

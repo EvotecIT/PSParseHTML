@@ -3,31 +3,36 @@
     param(
         [string] $File,
         [string] $OutputFile,
-        [switch] $ShouldKeepAttributeQuotes,
-        [switch] $ShouldKeepComments,
-        [switch] $ShouldKeepEmptyAttributes,
-        [switch] $ShouldKeepImpliedEndTag,
-        [switch] $ShouldKeepStandardElements
+        [string] $Content,
+        [bool] $ShouldKeepAttributeQuotes = $true,
+        [bool] $ShouldKeepComments = $true,
+        [bool] $ShouldKeepEmptyAttributes = $true,
+        [bool] $ShouldKeepImpliedEndTag = $true,
+        [bool] $ShouldKeepStandardElements = $true
     )
-    if ($File -and (Test-Path -LiteralPath $File)) {
-        $FileContent = [IO.File]::ReadAllText($file)
-
-        $HTMLParser = New-Object -TypeName AngleSharp.Html.Parser.HtmlParser
-        $ParsedDocument = $HTMLParser.ParseDocument($FileContent)
-        $StringWriter = [System.IO.StringWriter]::new()
-        $MinifyMarkupFormatter = New-Object -TypeName AngleSharp.Html.MinifyMarkupFormatter
-        $ParsedDocument.ToHtml($StringWriter, $MinifyMarkupFormatter)
-        $MinifyMarkupFormatter.ShouldKeepAttributeQuotes = $ShouldKeepAttributeQuotes
-        $MinifyMarkupFormatter.ShouldKeepComments = $ShouldKeepComments
-        $MinifyMarkupFormatter.ShouldKeepEmptyAttributes = $ShouldKeepEmptyAttributes
-        $MinifyMarkupFormatter.ShouldKeepImpliedEndTag = $ShouldKeepImpliedEndTag
-        $MinifyMarkupFormatter.ShouldKeepStandardElements = $ShouldKeepStandardElements
-
-        $FormattedHTML = $StringWriter.ToString()
-
-        if ($FormattedHTML) {
-            [IO.File]::WriteAllText($OutputFile, $FormattedHTML)
+    # Load from file or text
+    if ($File) {
+        if (Test-Path -LiteralPath $File) {
+            $Content = [IO.File]::ReadAllText($File)
+        } else {
+            Write-Warning 'Optimize-JavaScript - File doesnt exists'
+            return
         }
+    } elseif ($Content) {
+
+    } else {
+        Write-Warning 'Optimize-JavaScript - No choice file or Content. Termninated.'
+        return
+    }
+
+    # Do magic
+    $Output = Optimize-InternalHTML -Content $Content -ShouldKeepAttributeQuotes $ShouldKeepAttributeQuotes -ShouldKeepComments $ShouldKeepComments -ShouldKeepEmptyAttributes $ShouldKeepEmptyAttributes -ShouldKeepImpliedEndTag $ShouldKeepImpliedEndTag -ShouldKeepStandardElements $ShouldKeepStandardElements
+
+    # Output to file or to text
+    if ($OutputFile) {
+        [IO.File]::WriteAllText($OutputFile, $Output)
+    } else {
+        $Output
     }
 }
 

@@ -1,28 +1,26 @@
-﻿function Format-HTML {
+﻿function Format-CSS {
     [CmdletBinding()]
     param(
         [string] $File,
         [string] $OutputFile,
         [string] $Content
     )
-
     # Load from file or text
     if ($File) {
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Format-HTML - File doesnt exists'
+            Write-Warning 'Format-JavaScript - File doesnt exists'
             return
         }
     } elseif ($Content) {
 
     } else {
-        Write-Warning 'Format-HTML - No choice file or Content. Termninated.'
+        Write-Warning 'Format-JavaScript - No choice file or Content. Termninated.'
         return
     }
 
-    # Do the magic
-    $Output = Format-InternalHTML -Content $Content
+    $Output = Format-InternalCSS -Content $Content
 
     # Output to file or to text
     if ($OutputFile) {
