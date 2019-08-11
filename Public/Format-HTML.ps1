@@ -11,7 +11,7 @@
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Format-HTML - File doesnt exists'
+            Write-Warning "Format-HTML - File doesn't exists"
             return
         }
     } elseif ($Content) {

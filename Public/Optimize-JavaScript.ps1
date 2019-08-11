@@ -10,7 +10,7 @@
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Optimize-JavaScript - File doesnt exists'
+            Write-Warning "Optimize-JavaScript - File doesn't exists"
             return
         }
     } elseif ($Content) {
@@ -20,7 +20,8 @@
         return
     }
 
-    $Output = Optimize-InternalYahoo -Content $Content
+    #$Output = Optimize-InternalYahoo -Content $Content
+    $Output = Optimize-InternalUglifyJS -Content $Content
 
     # Output to file or to text
     if ($OutputFile) {

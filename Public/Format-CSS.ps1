@@ -10,13 +10,13 @@
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Format-JavaScript - File doesnt exists'
+            Write-Warning "Format-CSS - File doesn't exists"
             return
         }
     } elseif ($Content) {
 
     } else {
-        Write-Warning 'Format-JavaScript - No choice file or Content. Termninated.'
+        Write-Warning 'Format-CSS - No choice file or Content. Termninated.'
         return
     }
 

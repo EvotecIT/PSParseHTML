@@ -1,4 +1,4 @@
-﻿function Optimize-CSS {
+﻿function Convert-HTMLToText {
     [CmdletBinding()]
     param(
         [string] $File,
@@ -10,22 +10,17 @@
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning "Optimize-CSS - File doesn't exists"
+            Write-Warning "Convert-HTMLToText - File doesn't exists"
             return
         }
     } elseif ($Content) {
 
     } else {
-        Write-Warning 'Optimize-CSS - No choice file or Content. Termninated.'
+        Write-Warning 'Convert-HTMLToText - No choice file or Content. Termninated.'
         return
     }
 
-    # Do magic
-    #if ($Engine -eq 'AngleSharp') {
-    $Output = Optimize-InternalCSS -Content $Content
-    #} else {
-    #      $Output =  Optimize-InternalYahoo -Content $Content
-    # }
+    $Output = Format-InternalCSS -Content $Content
 
     # Output to file or to text
     if ($OutputFile) {

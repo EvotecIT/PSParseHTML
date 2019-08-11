@@ -4,26 +4,14 @@
     param(
         [string] $File,
         [string] $OutputFile,
-        [alias('FileContent')][string] $Content,
-        [int] $IndentSize = 4,
-        [string] $IndentChar = ' ',
-        [bool] $IndentWithTabs = $false,
-        [bool] $PreserveNewlines = $true,
-        [double] $MaxPreserveNewlines = 10.0,
-        [bool] $JslintHappy = $false,
-        [Jsbeautifier.BraceStyle] $BraceStyle = [Jsbeautifier.BraceStyle]::Collapse,
-        [bool] $KeepArrayIndentation = $false,
-        [bool] $KeepFunctionIndentation = $false,
-        [bool] $EvalCode = $false,
-        [int] $WrapLineLength = 0,
-        [bool] $BreakChainedMethods = $false
+        [alias('FileContent')][string] $Content
     )
     # Load from file or text
     if ($File) {
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Format-JavaScript - File doesnt exists'
+            Write-Warning "Format-JavaScript - File doesn't exists"
             return
         }
     } elseif ($Content) {
@@ -32,6 +20,20 @@
         Write-Warning 'Format-JavaScript - No choice file or Content. Termninated.'
         return
     }
+
+    # For now don't want to give this as an option
+    [int] $IndentSize = 4
+    [string] $IndentChar = ' '
+    [bool] $IndentWithTabs = $false
+    [bool] $PreserveNewlines = $true
+    [double] $MaxPreserveNewlines = 10.0
+    [bool] $JslintHappy = $false
+    [Jsbeautifier.BraceStyle] $BraceStyle = [Jsbeautifier.BraceStyle]::Collapse
+    [bool] $KeepArrayIndentation = $false
+    [bool] $KeepFunctionIndentation = $false
+    [bool] $EvalCode = $false
+    [int] $WrapLineLength = 0
+    [bool] $BreakChainedMethods = $false
 
     # do the magic
     $SplatJS = @{

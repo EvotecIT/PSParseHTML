@@ -3,27 +3,29 @@
     param(
         [string] $File,
         [string] $OutputFile,
-        [string] $Content,
-        [bool] $ShouldKeepAttributeQuotes = $true,
-        [bool] $ShouldKeepComments = $true,
-        [bool] $ShouldKeepEmptyAttributes = $true,
-        [bool] $ShouldKeepImpliedEndTag = $true,
-        [bool] $ShouldKeepStandardElements = $true
+        [string] $Content
     )
     # Load from file or text
     if ($File) {
         if (Test-Path -LiteralPath $File) {
             $Content = [IO.File]::ReadAllText($File)
         } else {
-            Write-Warning 'Optimize-JavaScript - File doesnt exists'
+            Write-Warning "Optimize-HTML - File doesn't exists"
             return
         }
     } elseif ($Content) {
 
     } else {
-        Write-Warning 'Optimize-JavaScript - No choice file or Content. Termninated.'
+        Write-Warning 'Optimize-HTML - No choice file or Content. Termninated.'
         return
     }
+
+    # for now don't want to give this as option
+    [bool] $ShouldKeepAttributeQuotes = $true
+    [bool] $ShouldKeepComments = $true
+    [bool] $ShouldKeepEmptyAttributes = $true
+    [bool] $ShouldKeepImpliedEndTag = $true
+    [bool] $ShouldKeepStandardElements = $true
 
     # Do magic
     $Output = Optimize-InternalHTML -Content $Content -ShouldKeepAttributeQuotes $ShouldKeepAttributeQuotes -ShouldKeepComments $ShouldKeepComments -ShouldKeepEmptyAttributes $ShouldKeepEmptyAttributes -ShouldKeepImpliedEndTag $ShouldKeepImpliedEndTag -ShouldKeepStandardElements $ShouldKeepStandardElements
@@ -35,4 +37,3 @@
         $Output
     }
 }
-

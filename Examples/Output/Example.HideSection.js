@@ -1,0 +1,1 @@
+function show(n){document.getElementById(n).style.display="block";document.getElementById("hide_"+n).style.display="";document.getElementById("show_"+n).style.display="none"}function hide(n){document.getElementById(n).style.display="none";document.getElementById("hide_"+n).style.display="none";document.getElementById("show_"+n).style.display=""}
