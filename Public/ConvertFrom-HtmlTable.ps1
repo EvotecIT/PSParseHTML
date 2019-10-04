@@ -15,31 +15,29 @@ Function ConvertFrom-HtmlTable {
         $ParsedDocument = $HTMLParser.ParseDocument($content)
 
         # Get all the tables
-        $tables = @()
-        $ParsedDocument.GetElementsByTagName('table') | %{$tables+=$_}
+        [array]$tables = $ParsedDocument.GetElementsByTagName('table')
 
         # For each table
         :table foreach ($table in $tables) {
-            $output = @()
             # Get the headers
-            $headers = $table.Rows[0].Cells.TextContent.Trim() | ?{$_}
+            $headers = $table.Rows[0].Cells.TextContent.Trim() | Where-Object{$_}
 
             # if headers have value
             if ($null -ne $headers) {
-                foreach ($row in $table.Rows | Select -SkipIndex 0) {
+                [pscustomobject]$output = foreach ($row in $table.Rows | Select-Object -SkipIndex 0) {
                     
                     # If there aren't as many cells as headers, skip this table
                     if (@($row.Cells).count -ne $headers.count) {
-                        Write-Verbose 'Unsupported table.'
+                        Write-Verbose 'Unsupported tab le.'
                         Continue table
                     }
-                    $obj = [pscustomobject]@{}
+                    $obj = @{}
                     
                     # add all the properties, one per row
                     for ($x=0;$x -lt $headers.count;$x++){
-                        $obj | Add-Member -MemberType NoteProperty -Name $headers[$x] -Value $row.Cells[$x].TextContent.Trim()
+                        $obj["$($headers[$x])"] = $row.Cells[$x].TextContent.Trim()
                     }
-                    $output += $obj
+                    [pscustomobject]$obj
                 }
                 # if there are any rows, output
                 if($output.count -ge 1) {
