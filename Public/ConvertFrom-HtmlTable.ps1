@@ -15,39 +15,40 @@ Function ConvertFrom-HtmlTable {
         $ParsedDocument = $HTMLParser.ParseDocument($content)
 
         # Get all the tables
-        [array]$tables = $ParsedDocument.GetElementsByTagName('table')
+        [Array] $Tables = $ParsedDocument.GetElementsByTagName('table')
 
         # For each table
         :table foreach ($table in $tables) {
-            # Get the headers
-            $headers = $table.Rows[0].Cells.TextContent.Trim() | Where-Object{$_}
+
+            # Get the headers / Where-Object is nessecary to get rid of empty values
+            $headers = $table.Rows[0].Cells.TextContent.Trim() | Where-Object { $_ }
 
             # if headers have value
             if ($null -ne $headers) {
-                [pscustomobject]$output = foreach ($row in $table.Rows | Select-Object -SkipIndex 0) {
-                    
+                [Array] $output = foreach ($row in $table.Rows | Select-Object -Skip 0) {
+
                     # If there aren't as many cells as headers, skip this table
                     if (@($row.Cells).count -ne $headers.count) {
-                        Write-Verbose 'Unsupported tab le.'
+                        Write-Verbose 'Unsupported table.'
                         Continue table
                     }
-                    $obj = @{}
-                    
+                    $obj = [ordered]@{ }
+
                     # add all the properties, one per row
-                    for ($x=0;$x -lt $headers.count;$x++){
+                    for ($x = 0; $x -lt $headers.count; $x++) {
+                        #$obj | Add-Member -MemberType NoteProperty -Name $headers[$x] -Value $row.Cells[$x].TextContent.Trim()
                         $obj["$($headers[$x])"] = $row.Cells[$x].TextContent.Trim()
                     }
-                    [pscustomobject]$obj
+                   [PSCustomObject] $obj
                 }
                 # if there are any rows, output
-                if($output.count -ge 1) {
-                    @(,$output)
-                    Remove-Variable output
+                if ($output.count -ge 1) {
+                    @(, $output)
                 } else {
                     Write-Verbose 'Table has no rows'
                 }
             }
         }
     }
-    End {}
+    End { }
 }
