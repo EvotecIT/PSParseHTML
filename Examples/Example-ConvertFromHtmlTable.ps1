@@ -3,7 +3,8 @@ $tmp = ConvertFrom-HtmlTable -Content $html
 
 # If converting multiple tables, the output will look funky
 # since it is creating an array of different objects.
-$tmp[0]
-$tmp[1]
+$tmp[0] | Format-Table -AutoSize
+$tmp[1] | Format-Table -AutoSize
+$tmp[2] | Format-Table -AutoSize
 
 # ... etc
