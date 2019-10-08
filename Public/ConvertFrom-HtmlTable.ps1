@@ -21,25 +21,28 @@ Function ConvertFrom-HtmlTable {
         :table foreach ($table in $tables) {
 
             # Get the headers / Where-Object is nessecary to get rid of empty values
-            $headers = $table.Rows[0].Cells.TextContent.Trim() | Where-Object { $_ }
+            [Array] $headers = $table.Rows[0].Cells.TextContent.Trim() #| Where-Object { $_ }
 
             # if headers have value
-            if ($null -ne $headers) {
+            if ($Headers.Count -gt 1) {
                 [Array] $output = foreach ($row in $table.Rows | Select-Object -Skip 0) {
 
                     # If there aren't as many cells as headers, skip this table
                     if (@($row.Cells).count -ne $headers.count) {
-                        Write-Verbose 'Unsupported table.'
+                        Write-Warning 'Unsupported table.'
                         Continue table
                     }
                     $obj = [ordered]@{ }
-
                     # add all the properties, one per row
                     for ($x = 0; $x -lt $headers.count; $x++) {
                         #$obj | Add-Member -MemberType NoteProperty -Name $headers[$x] -Value $row.Cells[$x].TextContent.Trim()
-                        $obj["$($headers[$x])"] = $row.Cells[$x].TextContent.Trim()
+                        if ($($headers[$x]) -ne '') {
+                            $obj["$($headers[$x])"] = $row.Cells[$x].TextContent.Trim()
+                        } else {
+                            $obj["$x"] = $row.Cells[$x].TextContent.Trim()
+                        }
                     }
-                   [PSCustomObject] $obj
+                    [PSCustomObject] $obj
                 }
                 # if there are any rows, output
                 if ($output.count -ge 1) {
