@@ -25,7 +25,7 @@ Function ConvertFrom-HtmlTable {
 
             # if headers have value
             if ($Headers.Count -gt 1) {
-                [Array] $output = foreach ($row in $table.Rows | Select-Object -Skip 0) {
+                [Array] $output = foreach ($row in $table.Rows | Select-Object -Skip 1) {
 
                     # If there aren't as many cells as headers, skip this table
                     if (@($row.Cells).count -ne $headers.count) {
