@@ -34,6 +34,8 @@ They expect input as string or from file. They output to string or to file.
 
 ## ChangeLog
 
+- 0.0.9 - 10.10.2019
+  - Updated ConvertFrom-HTMLTable fixing problem with header being part of table (fix by Anthony Howell!)
 - 0.0.8 - 8.10.2019
   - Updated ConvertFrom-HTMLTable to support more tables
   - Added ConvertFrom-HTMLTag
