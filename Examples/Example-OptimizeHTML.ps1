@@ -53,4 +53,5 @@ $HTMLContentFormatted = @"
 
 $Minimized = Optimize-HTML -Content $HTMLContentFormatted
 $Minimized
-Format-HTML -Content $Minimized
+# Just in case you would like to get the look back
+#Format-HTML -Content $Minimized
