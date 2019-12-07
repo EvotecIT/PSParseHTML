@@ -33,9 +33,6 @@ Function ConvertFrom-HtmlTable {
 
         # For each table
         :table foreach ($table in $tables) {
-
-            # Get the headers / Where-Object is nessecary to get rid of empty values
-            #[Array] $headers = $table.Rows[0].Cells.TextContent.Trim() #| Where-Object { $_ }
             [Array] $headers = foreach ($_ in $Table.Rows[0].Cells) {
                 $CellContent = $_.TextContent.Trim()
                 if ($ReplaceHeaders) {
@@ -50,11 +47,6 @@ Function ConvertFrom-HtmlTable {
             if ($Headers.Count -ge 1) {
                 [Array] $output = foreach ($row in $table.Rows | Select-Object -Skip 1) {
 
-                    # If there aren't as many cells as headers, skip this table
-                    #if (@($row.Cells).count -ne $headers.count) {
-                    #Write-Warning 'Unsupported table.'
-                    #     Continue table
-                    #}
                     $obj = [ordered]@{ }
                     # add all the properties, one per row
                     for ($x = 0; $x -lt $headers.count; $x++) {
