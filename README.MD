@@ -20,15 +20,17 @@
 # PSParseHTML
 **PSParseHTML** is PowerShell module that's main purpose is to be a helper module for [PSWriteHTML](https://github.com/EvotecIT/PSWriteHTML). However it's functionality can be utilized in other projects, not related to **PSWriteHTML**, therefore it's available as a separate module. Basic how-to usage is described [on this blog post](https://evotec.xyz/formatting-and-minifying-resources-html-css-javascript-with-powershell/).
 
-**PSParseHTML** has 8 functions:
-- Optimize-CSS
-- Optimize-HTML
-- Optimize-JavaScript
+**PSParseHTML** has 9 functions:
+
+- Convert-HTMLToText
+- ConvertFrom-HtmlTable
+- ConvertFrom-HTMLTag
 - Format-CSS
 - Format-HTML
 - Format-JavaScript
-- Convert-HTMLToText
-- ConvertFrom-HTMLTable
+- Optimize-CSS
+- Optimize-HTML
+- Optimize-JavaScript
 
 They expect input as string or from file. They output to string or to file.
 
