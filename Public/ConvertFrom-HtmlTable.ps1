@@ -3,11 +3,20 @@ Function ConvertFrom-HtmlTable {
     param (
         [Parameter(Mandatory = $true, ParameterSetName = 'Content')][string]$Content,
         [Parameter(Mandatory = $true, ParameterSetName = 'Uri')][Uri] $Url,
-        [Array] $ReplaceDictionary
+        [System.Collections.IDictionary] $ReplaceContent,
+        [System.Collections.IDictionary] $ReplaceHeaders
     )
     Begin {
+        # This fixes an issue https://github.com/PowerShell/PowerShell/issues/11287 for ConvertTo-HTML
+        $HeadersReplacement = [ordered] @{ '\*' = ''; }
         # Initialize the parser
         $HTMLParser = [AngleSharp.Html.Parser.HtmlParser]::new()
+        if (-not $ReplaceHeaders) {
+            $ReplaceHeaders = [ordered] @{ }
+        }
+        foreach ($Key in $HeadersReplacement.Keys) {
+            $ReplaceHeaders["$Key"] = $HeadersReplacement.$Key
+        }
     }
     Process {
         if ($Url) {
@@ -26,7 +35,16 @@ Function ConvertFrom-HtmlTable {
         :table foreach ($table in $tables) {
 
             # Get the headers / Where-Object is nessecary to get rid of empty values
-            [Array] $headers = $table.Rows[0].Cells.TextContent.Trim() #| Where-Object { $_ }
+            #[Array] $headers = $table.Rows[0].Cells.TextContent.Trim() #| Where-Object { $_ }
+            [Array] $headers = foreach ($_ in $Table.Rows[0].Cells) {
+                $CellContent = $_.TextContent.Trim()
+                if ($ReplaceHeaders) {
+                    foreach ($Key in $ReplaceHeaders.Keys) {
+                        $CellContent = $CellContent -replace $Key, $ReplaceHeaders.$Key
+                    }
+                }
+                $CellContent
+            }
 
             # if headers have value
             if ($Headers.Count -ge 1) {
@@ -42,7 +60,13 @@ Function ConvertFrom-HtmlTable {
                     for ($x = 0; $x -lt $headers.count; $x++) {
                         if ($($headers[$x])) {
                             if ($row.Cells[$x].TextContent) {
-                                $obj["$($headers[$x])"] = $row.Cells[$x].TextContent.Trim()
+                                $CellContent = $row.Cells[$x].TextContent.Trim()
+                                if ($ReplaceContent) {
+                                    foreach ($Key in $ReplaceContent.Keys) {
+                                        $CellContent = $CellContent -replace $Key, $ReplaceContent.$Key
+                                    }
+                                }
+                                $obj["$($headers[$x])"] = $CellContent
                             } else {
                                 $obj["$($headers[$x])"] = $row.Cells[$x].TextContent
                             }
