@@ -5,7 +5,8 @@ Function ConvertFrom-HtmlTable {
         [alias('Uri')][Parameter(Mandatory = $true, ParameterSetName = 'Uri')][Uri] $Url,
         [System.Collections.IDictionary] $ReplaceContent,
         [System.Collections.IDictionary] $ReplaceHeaders,
-        [ValidateSet('AngleSharp', 'AgilityPack')] $Engine
+        [ValidateSet('AngleSharp', 'AgilityPack')] $Engine,
+        [switch] $ReverseTable
     )
     Begin {
         # This fixes an issue https://github.com/PowerShell/PowerShell/issues/11287 for ConvertTo-HTML
@@ -18,10 +19,10 @@ Function ConvertFrom-HtmlTable {
         }
     }
     Process {
-        if ($Engine -eq 'AngleSharp') {
+        if ($Engine -eq 'AngleSharp' -and -not $ReverseTable) {
             ConvertFrom-HTMLTableAngle -Url $Url -Content $Content -ReplaceHeaders $ReplaceHeaders -ReplaceContent $ReplaceContent
         } else {
-            ConvertFrom-HTMLTableAgilityPack -Url $url -Content $Content -ReplaceHeaders $ReplaceHeaders -ReplaceContent $ReplaceContent
+            ConvertFrom-HTMLTableAgilityPack -Url $url -Content $Content -ReplaceHeaders $ReplaceHeaders -ReplaceContent $ReplaceContent -ReverseTable:$ReverseTable
         }
     }
     End { }
