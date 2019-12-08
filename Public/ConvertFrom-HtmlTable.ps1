@@ -2,7 +2,7 @@ Function ConvertFrom-HtmlTable {
     [cmdletbinding()]
     param (
         [Parameter(Mandatory = $true, ParameterSetName = 'Content')][string]$Content,
-        [Parameter(Mandatory = $true, ParameterSetName = 'Uri')][Uri] $Url,
+        [alias('Uri')][Parameter(Mandatory = $true, ParameterSetName = 'Uri')][Uri] $Url,
         [System.Collections.IDictionary] $ReplaceContent,
         [System.Collections.IDictionary] $ReplaceHeaders,
         [ValidateSet('AngleSharp', 'AgilityPack')] $Engine
