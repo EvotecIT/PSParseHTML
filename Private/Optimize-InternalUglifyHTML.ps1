@@ -7,5 +7,5 @@
     $Settings = [NUglify.Html.HtmlSettings]::new()
     $Settings.RemoveOptionalTags = $false
 
-    [NUglify.Uglify]::Html($HTMLContentFormatted, $Settings).Code
+    [NUglify.Uglify]::Html($Content, $Settings).Code
 }
