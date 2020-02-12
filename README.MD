@@ -37,6 +37,9 @@ The expected input is a string or from a file. The expected output to string or 
 
 ## ChangeLog
 
+- 0.0.14 - 2020.02.12
+  - Added ConvertFrom-HTMLAttributes. Can search for Tags/Classes
+  - Removed ConvertFrom-HTMLTag and added it as an alias to ConvertFromHTMLAttributes
 - 0.0.13 - 2020.01.04
   - Fix for Optimize-HTML - it wasn't working at all
 - 0.0.9 - 10.10.2019
