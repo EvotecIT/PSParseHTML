@@ -2,9 +2,10 @@
     [alias('ConvertFrom-HTMLTag', 'ConvertFrom-HTMLClass')]
     [cmdletbinding()]
     param (
-        [Parameter(Mandatory = $true)][string]$Content,
-        [string]$Tag,
-        [string]$Class
+        [Parameter(Mandatory = $true)][Array] $Content,
+        [string] $Tag,
+        [string] $Class,
+        [switch] $ReturnObject
     )
     Begin {
         # Initialize the parser
@@ -16,10 +17,18 @@
         # Get all the tables
         if ($Tag) {
             [Array] $TagContent = $ParsedDocument.GetElementsByTagName($Tag)
-            $TagContent.TextContent
+            if ($ReturnObject) {
+                $TagContent
+            } else {
+                $TagContent.TextContent
+            }
         } elseif ($Class) {
             [Array] $ClassContent = $ParsedDocument.GetElementsByClassName($Class)
-            $ClassContent.TextContent
+            if ($ReturnObject) {
+                $ClassContent
+            } else {
+                $ClassContent.TextContent
+            }
         }
     }
     End { }
