@@ -12,7 +12,7 @@
         [bool] $KeepArrayIndentation = $false,
         [bool] $KeepFunctionIndentation = $false,
         [bool] $EvalCode = $false,
-        [int] $WrapLineLength = 0,
+        #[int] $WrapLineLength = 0,
         [bool] $BreakChainedMethods = $false
     )
     $Jsbeautifier = [Jsbeautifier.Beautifier]::new()
@@ -26,7 +26,7 @@
     $Jsbeautifier.Opts.KeepArrayIndentation = $KeepArrayIndentation
     $Jsbeautifier.Opts.KeepFunctionIndentation = $KeepFunctionIndentation
     $Jsbeautifier.Opts.EvalCode = $EvalCode
-    $Jsbeautifier.Opts.WrapLineLength = $WrapLineLength
+    #$Jsbeautifier.Opts.WrapLineLength = $WrapLineLength
     $Jsbeautifier.Opts.BreakChainedMethods = $BreakChainedMethods
 
     #$Jsbeautifier.Flags
