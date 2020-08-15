@@ -32,7 +32,7 @@
     [bool] $KeepArrayIndentation = $false
     [bool] $KeepFunctionIndentation = $false
     [bool] $EvalCode = $false
-    [int] $WrapLineLength = 0
+    #[int] $WrapLineLength = 0
     [bool] $BreakChainedMethods = $false
 
     # do the magic
@@ -47,7 +47,7 @@
         KeepArrayIndentation    = $KeepArrayIndentation
         KeepFunctionIndentation = $KeepFunctionIndentation
         EvalCode                = $EvalCode
-        WrapLineLength          = $WrapLineLength
+        #WrapLineLength          = $WrapLineLength
         BreakChainedMethods     = $BreakChainedMethods
     }
 
