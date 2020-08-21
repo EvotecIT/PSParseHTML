@@ -147,11 +147,11 @@ $Configuration = @{
         }
         BuildDocumentation = $false
         PublishModule      = @{
-            Enabled      = $true
+            Enabled      = $false
             Prerelease   = ''
             RequireForce = $false
-            GitHub       = $true
+            GitHub       = $false
         }
     }
 }
-New-PrepareModule -Configuration $Configuration -Verbose
+New-PrepareModule -Configuration $Configuration
