@@ -5,6 +5,8 @@
         [Parameter(Mandatory = $true)][Array] $Content,
         [string] $Tag,
         [string] $Class,
+        [string] $Id,
+        [string] $Name,
         [switch] $ReturnObject
     )
     Begin {
@@ -16,18 +18,19 @@
         $ParsedDocument = $HTMLParser.ParseDocument($content)
         # Get all the tables
         if ($Tag) {
-            [Array] $TagContent = $ParsedDocument.GetElementsByTagName($Tag)
-            if ($ReturnObject) {
-                $TagContent
-            } else {
-                $TagContent.TextContent
-            }
+            [Array] $OutputContent = $ParsedDocument.GetElementsByTagName($Tag)
         } elseif ($Class) {
-            [Array] $ClassContent = $ParsedDocument.GetElementsByClassName($Class)
+            [Array] $OutputContent = $ParsedDocument.GetElementsByClassName($Class)
+        } elseif ($Id) {
+            [Array] $OutputContent = $ParsedDocument.GetElementById($Id)
+        } elseif ($Name) {
+            [Array] $OutputContent = $ParsedDocument.GetElementsByName($Name)
+        }
+        if ($OutputContent) {
             if ($ReturnObject) {
-                $ClassContent
+                $OutputContent
             } else {
-                $ClassContent.TextContent
+                $OutputContent.TextContent
             }
         }
     }
