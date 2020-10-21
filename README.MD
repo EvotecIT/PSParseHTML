@@ -79,4 +79,5 @@ This module uses several external libraries to do its work. The authors of those
 - [YUICompressor.NET](https://github.com/YUICompressor-NET/YUICompressor.NET)
 - [AngleSharp](https://github.com/AngleSharp/AngleSharp)
 - [Jsbeautifier](https://github.com/denis-ivanov/Jsbeautifier)
-- [NUglify](https://github.com/xoofx/NUglify)
+- [NUglify](https://github.com/trullock/NUglify)
+- [ZetaProducerHtmlCompressor](https://github.com/UweKeim/ZetaProducerHtmlCompressor)
