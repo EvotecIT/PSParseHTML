@@ -36,6 +36,16 @@
 
 The expected input is a string or from a file. The expected output to string or to file.
 
+## Table of contents
+
+- [PSParseHTML](#psparsehtml)
+  - [Table of contents](#table-of-contents)
+  - [ChangeLog](#changelog)
+  - [Installation](#installation)
+    - [Install from PSGallery](#install-from-psgallery)
+    - [Update from PSGallery](#update-from-psgallery)
+  - [3rd party references](#3rd-party-references)
+
 ## ChangeLog
 
 - 0.0.17 - 2020.10.21
@@ -57,7 +67,9 @@ The expected input is a string or from a file. The expected output to string or 
 - 0.0.5 - 11.08.2019 - [Blog post for the release](https://evotec.xyz/formatting-and-minifying-resources-html-css-javascript-with-powershell/)
   - First public release
 
-## To install
+## Installation
+
+### Install from PSGallery
 
 ```powershell
 Install-Module -Name PSParseHTML -AllowClobber -Force
@@ -65,7 +77,7 @@ Install-Module -Name PSParseHTML -AllowClobber -Force
 
 Force and AllowClobber aren't necessary but they do skip errors in case some appear.
 
-## And to update
+### Update from PSGallery
 
 ```powershell
 Update-Module -Name PSParseHTML
@@ -79,8 +91,6 @@ That's it. Whenever there's a new version you simply run the command and you can
 
 This module uses several external libraries to do its work. The authors of those libraries made a fantastic job. I've just added some PowerShell to the mix.
 
-- [YUICompressor.NET](https://github.com/YUICompressor-NET/YUICompressor.NET)
 - [AngleSharp](https://github.com/AngleSharp/AngleSharp)
 - [Jsbeautifier](https://github.com/denis-ivanov/Jsbeautifier)
 - [NUglify](https://github.com/trullock/NUglify)
-- [ZetaProducerHtmlCompressor](https://github.com/UweKeim/ZetaProducerHtmlCompressor)
