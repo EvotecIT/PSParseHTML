@@ -21,6 +21,8 @@
     }
 
     $Output = Format-InternalCSS -Content $Content
+    #$Content = "<style>$Content</style>"
+    #$Output = Format-InternalFormatWithUglify -Content $Content -IsFragment
 
     # Output to file or to text
     if ($OutputFile) {

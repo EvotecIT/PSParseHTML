@@ -3,7 +3,15 @@
     param(
         [string] $File,
         [string] $OutputFile,
-        [string] $Content
+        [string] $Content,
+        [string] $Indent = '    ',
+        [NUglify.BlockStart] $BlockStartLine = [NUglify.BlockStart]::SameLine,
+        [switch] $RemoveHTMLComments,
+        [switch] $RemoveOptionalTags,
+        [switch] $OutputTextNodesOnNewLine,
+        [switch] $RemoveEmptyAttributes,
+        [switch] $AlphabeticallyOrderAttributes,
+        [switch] $RemoveEmptyBlocks
     )
 
     # Load from file or text
@@ -22,7 +30,18 @@
     }
 
     # Do the magic
-    $Output = Format-InternalHTML -Content $Content
+    $formatInternalFormatWithUglifySplat = @{
+        Content                       = $Content
+        Indent                        = $Indent
+        BlockStartLine                = $BlockStartLine
+        OutputTextNodesOnNewLine      = $OutputTextNodesOnNewLine
+        RemoveOptionalTags            = $RemoveOptionalTags
+        RemoveEmptyAttributes         = $RemoveEmptyAttributes
+        AlphabeticallyOrderAttributes = $AlphabeticallyOrderAttributes
+        RemoveEmptyBlocks             = $RemoveEmptyBlocks
+        RemoveComments                = $RemoveHTMLComments
+    }
+    $Output = Format-InternalFormatWithUglify @formatInternalFormatWithUglifySplat
 
     # Output to file or to text
     if ($OutputFile) {
