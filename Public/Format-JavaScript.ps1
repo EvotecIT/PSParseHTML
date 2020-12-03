@@ -51,7 +51,8 @@
         BreakChainedMethods     = $BreakChainedMethods
     }
 
-    $Output = Format-InternalJS -Content $Content @SplatJS
+    #$Output = Format-InternalJS -Content $Content @SplatJS
+    $Output = Format-InternalUglifyJS -Content $Content
     if ($OutputFile) {
         [IO.File]::WriteAllText($OutputFile, $Output)
     } else {
