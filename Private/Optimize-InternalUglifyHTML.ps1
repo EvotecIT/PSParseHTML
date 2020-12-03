@@ -6,7 +6,7 @@
 
     $Settings = [NUglify.Html.HtmlSettings]::new()
     $Settings.RemoveOptionalTags = $false
-
+    $Settings.CssSettings.DecodeEscapes = $false
     [NUglify.Uglify]::Html($Content, $Settings).Code
 }
 
