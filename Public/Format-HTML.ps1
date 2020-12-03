@@ -40,6 +40,7 @@
         AlphabeticallyOrderAttributes = $AlphabeticallyOrderAttributes
         RemoveEmptyBlocks             = $RemoveEmptyBlocks
         RemoveComments                = $RemoveHTMLComments
+        #IsFragment                    = $true
     }
     $Output = Format-InternalFormatWithUglify @formatInternalFormatWithUglifySplat
 

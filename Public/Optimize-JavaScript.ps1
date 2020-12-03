@@ -19,8 +19,6 @@
         Write-Warning 'Optimize-JavaScript - No choice file or Content. Termninated.'
         return
     }
-
-    #$Output = Optimize-InternalYahoo -Content $Content
     $Output = Optimize-InternalUglifyJS -Content $Content
 
     # Output to file or to text

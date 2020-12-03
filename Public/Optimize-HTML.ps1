@@ -20,17 +20,8 @@
         return
     }
 
-    # for now don't want to give this as option
-    [bool] $ShouldKeepAttributeQuotes = $true
-    [bool] $ShouldKeepComments = $true
-    [bool] $ShouldKeepEmptyAttributes = $true
-    [bool] $ShouldKeepImpliedEndTag = $true
-    [bool] $ShouldKeepStandardElements = $true
-
     # Do magic
-    #$Output = Optimize-InternalHTML -Content $Content -ShouldKeepAttributeQuotes $ShouldKeepAttributeQuotes -ShouldKeepComments $ShouldKeepComments -ShouldKeepEmptyAttributes $ShouldKeepEmptyAttributes -ShouldKeepImpliedEndTag $ShouldKeepImpliedEndTag -ShouldKeepStandardElements $ShouldKeepStandardElements
     $Output = Optimize-InternalUglifyHTML -Content $Content
-
 
     # Output to file or to text
     if ($OutputFile) {
