@@ -21,11 +21,8 @@
     }
 
     # Do magic
-    #if ($Engine -eq 'AngleSharp') {
-    $Output = Optimize-InternalCSS -Content $Content
-    #} else {
-    #      $Output =  Optimize-InternalYahoo -Content $Content
-    # }
+    #$Output = Optimize-InternalCSS -Content $Content
+    $Output = Optimize-InternalUglifyCSS -Content $Content
 
     # Output to file or to text
     if ($OutputFile) {
