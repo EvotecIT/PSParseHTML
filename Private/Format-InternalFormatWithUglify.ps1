@@ -31,12 +31,27 @@
     $Settings.JsSettings.OutputMode = [NUglify.OutputMode]::MultipleLines
     $Settings.JsSettings.Indent = $Indent
     $Settings.JsSettings.BlocksStartOnSameLine = $BlockStartLine
+    $Settings.JsSettings.PreserveFunctionNames = $true
+    $Settings.JsSettings.LocalRenaming = [NUglify.JavaScript.LocalRenaming]::KeepAll
+    #$Settings.JsSettings.EvalTreatment = [NUglify.JavaScript.EvalTreatment]::Ignore
+    #$Settings.JsSettings.Format = [NUglify.JavaScript.JavaScriptFormat]::Normal
+    $Settings.JsSettings.NoAutoRenameList = $true
+    $Settings.JsSettings.PreserveFunctionNames = $true
+    #$Settings.JsSettings.CollapseToLiteral = $true
+    #$Settings.JsSettings.ConstStatementsMozilla = $true
+    #$Settings.JsSettings.LineBreakThreshold = 50
+    $Settings.JsSettings.ReorderScopeDeclarations = $false
+    #$Settings.JsSettings.RenamePairs = $false
+    #$Settings.JsSettings.QuoteObjectLiteralProperties = $true
+    $Settings.JsSettings.TermSemicolons = $true
+    # $Settings.NoAutoRenameCollection  # ReadOnly
     #$Settings.JsSettings.LineTerminator = "`r`n"
     # CSS Settings
     $Settings.CssSettings.OutputMode = [NUglify.OutputMode]::MultipleLines
     $Settings.CssSettings.Indent = $Indent
     $Settings.CssSettings.BlocksStartOnSameLine = $BlockStartLine
     $Settings.CssSettings.RemoveEmptyBlocks = $RemoveEmptyBlocks
+    $Settings.CssSettings.DecodeEscapes = $false
     #$Settings.CssSettings.LineTerminator = "`r`n"
     [NUglify.Uglify]::Html($Content, $Settings).Code
 }
