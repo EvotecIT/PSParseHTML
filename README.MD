@@ -48,6 +48,12 @@ The expected input is a string or from a file. The expected output to string or 
 
 ## ChangeLog
 
+- 0.0.18 - 2021.02.02
+  - Update NUglify to 1.13.2
+  - Update HtmlAgilityPack to v1.11.30
+  - Better formatting HTML (including JS/CSS)
+  - Better minimizing HTML (including JS/CSS)
+  - Fixes `ConvertFrom-HtmlTable` for some use cases
 - 0.0.17 - 2020.10.21
   - Update NUglify to 1.9.9
 - 0.0.16 - 2020.08.21
