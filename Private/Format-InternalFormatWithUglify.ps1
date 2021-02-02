@@ -17,6 +17,11 @@
     if ($IsFragment) {
         $Settings.IsFragmentOnly = $true
     }
+    # Keep first comment
+    # $Pattern = "<!-- saved from url=\(0014\)about:internet -->"
+    # $MOTW = [System.Text.RegularExpressions.Regex]::new($Pattern) #, [System.Text.RegularExpressions.RegexOptions]::MultiLine)
+    # $Settings.KeepCommentsRegex.Add($MOTW)
+
     $Settings.RemoveOptionalTags = $RemoveOptionalTags.IsPresent
     $Settings.PrettyPrint = $true
     $Settings.Indent = $Indent
@@ -44,6 +49,9 @@
     #$Settings.JsSettings.RenamePairs = $false
     #$Settings.JsSettings.QuoteObjectLiteralProperties = $true
     $Settings.JsSettings.TermSemicolons = $true
+    #$Settings.JsSettings.Format = [NUglify.JavaScript.JavaScriptFormat]::Normal
+    $Settings.JsSettings.RemoveUnneededCode = $false;
+    $Settings.JsSettings.RemoveFunctionExpressionNames = $false;
     # $Settings.NoAutoRenameCollection  # ReadOnly
     #$Settings.JsSettings.LineTerminator = "`r`n"
     # CSS Settings

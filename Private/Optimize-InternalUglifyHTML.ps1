@@ -1,13 +1,31 @@
 ﻿function Optimize-InternalUglifyHTML {
     [CmdletBinding()]
     param(
-        [string] $Content
+        [string] $Content,
+        [switch] $CSSDecodeEscapes
     )
 
     $Settings = [NUglify.Html.HtmlSettings]::new()
     $Settings.RemoveOptionalTags = $false
-    $Settings.CssSettings.DecodeEscapes = $false
-    [NUglify.Uglify]::Html($Content, $Settings).Code
+    $Settings.CssSettings.DecodeEscapes = $CSSDecodeEscapes.IsPresent
+    # Keep first comment
+    #$Pattern = "<!-- saved from url=\(0014\)about:internet -->"
+    #$Pattern = "^\ssaved\sfrom\url="
+    #$MOTW = [System.Text.RegularExpressions.Regex]::new($Pattern, [System.Text.RegularExpressions.RegexOptions]::MultiLine)
+    #$Settings.KeepCommentsRegex.Add($MOTW)
+
+    if ($Content -like "*<!-- saved from url=(0014)about:internet -->*") {
+        $MOTW = "<!-- saved from url=(0014)about:internet -->"
+    } else {
+        $MOTW = ''
+    }
+    $Settings.RemoveComments = $true
+    $Output = [NUglify.Uglify]::Html($Content, $Settings).Code
+    if ($MOTW) {
+        $MOTW + [System.Environment]::NewLine + $Output
+    } else {
+        $Output
+    }
 }
 
 <# $Settings

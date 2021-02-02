@@ -3,7 +3,8 @@
     param(
         [string] $File,
         [string] $OutputFile,
-        [string] $Content
+        [string] $Content,
+        [switch] $CSSDecodeEscapes
     )
     # Load from file or text
     if ($File) {
@@ -21,7 +22,7 @@
     }
 
     # Do magic
-    $Output = Optimize-InternalUglifyHTML -Content $Content
+    $Output = Optimize-InternalUglifyHTML -Content $Content -CSSDecodeEscapes:$CSSDecodeEscapes
 
     # Output to file or to text
     if ($OutputFile) {
