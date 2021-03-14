@@ -48,6 +48,8 @@ The expected input is a string or from a file. The expected output to string or 
 
 ## ChangeLog
 
+- 0.0.19 - 2021.03.14
+  - Update NUglify to 1.13.6
 - 0.0.18 - 2021.02.02
   - Update NUglify to 1.13.2
   - Update HtmlAgilityPack to v1.11.30
