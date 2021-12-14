@@ -22,11 +22,12 @@
 
 **PSParseHTML** is PowerShell module that's main purpose is to be a helper module for [PSWriteHTML](https://github.com/EvotecIT/PSWriteHTML). However it's functionality can be utilized in other projects, not related to **PSWriteHTML**, therefore it's available as a separate module. Basic how-to usage is described [on this blog post](https://evotec.xyz/formatting-and-minifying-resources-html-css-javascript-with-powershell/).
 
-**PSParseHTML** has 9 functions:
+**PSParseHTML** has 10 functions:
 
 - Convert-HTMLToText
 - ConvertFrom-HtmlTable
-- ConvertFrom-HTMLTag
+- ConvertFrom-HTMLAttributes
+- ConvertFrom-HTML
 - Format-CSS
 - Format-HTML
 - Format-JavaScript
@@ -40,40 +41,10 @@ The expected input is a string or from a file. The expected output to string or 
 
 - [PSParseHTML](#psparsehtml)
   - [Table of contents](#table-of-contents)
-  - [ChangeLog](#changelog)
   - [Installation](#installation)
     - [Install from PSGallery](#install-from-psgallery)
     - [Update from PSGallery](#update-from-psgallery)
   - [3rd party references](#3rd-party-references)
-
-## ChangeLog
-
-- 0.0.19 - 2021.03.14
-  - Update NUglify to 1.13.6
-- 0.0.18 - 2021.02.02
-  - Update NUglify to 1.13.2
-  - Update HtmlAgilityPack to v1.11.30
-  - Better formatting HTML (including JS/CSS)
-  - Better minimizing HTML (including JS/CSS)
-  - Fixes `ConvertFrom-HtmlTable` for some use cases
-- 0.0.17 - 2020.10.21
-  - Update NUglify to 1.9.9
-- 0.0.16 - 2020.08.21
-  - Improvements to ConvertFrom-HTMLAttributes
-- 0.0.14 - 2020.02.12
-  - Added ConvertFrom-HTMLAttributes. Can search for Tags/Classes
-  - Removed ConvertFrom-HTMLTag and added it as an alias to ConvertFromHTMLAttributes
-- 0.0.13 - 2020.01.04
-  - Fix for Optimize-HTML - it wasn't working at all
-- 0.0.9 - 10.10.2019
-  - Updated ConvertFrom-HTMLTable fixing problem with the header being part of the table (fix by Anthony Howell!)
-- 0.0.8 - 8.10.2019
-  - Updated ConvertFrom-HTMLTable to support more tables
-  - Added ConvertFrom-HTMLTag
-- 0.0.6 - 6.10.2019
-  - Added ConvertFrom-HTMLTable (Thank you - Anthony Howell!)
-- 0.0.5 - 11.08.2019 - [Blog post for the release](https://evotec.xyz/formatting-and-minifying-resources-html-css-javascript-with-powershell/)
-  - First public release
 
 ## Installation
 
