@@ -1,4 +1,4 @@
-@{
+﻿@{
     AliasesToExport      = @('ConvertFrom-HTMLTag', 'ConvertFrom-HTMLClass', 'Format-JS')
     Author               = 'Przemyslaw Klys'
     CmdletsToExport      = @()
