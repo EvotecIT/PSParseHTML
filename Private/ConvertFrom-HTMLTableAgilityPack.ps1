@@ -21,6 +21,7 @@
 
         [Array] $OutputTables = :table foreach ($table in $Tables) {
             $Rows = $table.SelectNodes('.//tr')
+            #$Rows | Format-Table -Property ChildNodes,InnerHtml, Line
             if ($ReverseTable) {
                 $Count = 0
                 [Array] $TableContent = @(
