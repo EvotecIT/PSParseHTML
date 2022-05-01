@@ -1,6 +1,6 @@
 ﻿## Extracting tables from web page
 
-Extracting tables from the web page is a very easy task when using **PSParseHTML**.
+Extracting tables from the web page is an easy task when using **PSParseHTML**.
 
 ```powershell
 $Url = 'https://en.wikipedia.org/wiki/List_of_AMD_Ryzen_processors'

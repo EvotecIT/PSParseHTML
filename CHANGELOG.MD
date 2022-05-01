@@ -1,6 +1,15 @@
 ﻿## ChangeLog
 
-#### - 0.0.20
+#### - 0.0.21 - 2022.05.01
+  - Fixes issue with ConvertFrom-HTMLTable when using AgilityPack. Using AgilityPack for HTML parsing would fail to detect encoding or convert special chars. This release fixes this.
+  - Updates libraries:
+    - AngleSharp
+    - AngleSharp.Css
+    - HtmlAgilityPack
+    - JsBeautifier
+    - NUglify
+
+#### - 0.0.20 - 2022.01.16
   - Added `ConvertTo-HTML` function
 
 #### - 0.0.19 - 2021.03.14
