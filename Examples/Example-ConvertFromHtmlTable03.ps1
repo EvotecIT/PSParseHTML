@@ -15,4 +15,4 @@ New-HTML {
             New-HTMLTable -DataTable $Table -Filtering
         }
     }
-} -FilePath "$PSScriptRoot\Output\Example.Wikipedia.html" -ShowHTML -UseCssLinks -UseJavaScriptLinks
+} -FilePath "$PSScriptRoot\Output\Example.Wikipedia.html" -ShowHTML -Online
