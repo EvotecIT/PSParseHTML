@@ -1,43 +1,423 @@
 <!DOCTYPE html>
-<html><!-- HEADER -->
+<html>
+    <!-- HEADER -->
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="author" />
         <meta content="2019-08-11 21:12:31" name="revised" />
-        <title>Title</title><!-- CSS Default fonts START -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Hammersmith+One|Questrial|Oswald" type="text/css" rel="stylesheet" /><!-- CSS Default fonts END --><!-- CSS Default fonts icons START -->
-        <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" type="text/css" rel="stylesheet" /><!-- CSS Default fonts icons END --><!-- CSS Always Required Default Visual Settings START -->
+        <title>Title</title>
+        <!-- CSS Default fonts START -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Hammersmith+One|Questrial|Oswald" type="text/css" rel="stylesheet" />
+        <!-- CSS Default fonts END -->
+        <!-- CSS Default fonts icons START -->
+        <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" type="text/css" rel="stylesheet" />
+        <!-- CSS Default fonts icons END -->
+        <!-- CSS Always Required Default Visual Settings START -->
         <style>
-            body {\r\n    font-family: Roboto Condensed,Helvetica Neue,sans-serif;\r\n    font-size: 8pt\r\n}\r\nhr {\r\n    height: 4px;\r\n    background-color: #6cf;\r\n    border: 0;\r\n    width: 100%\r\n}\r\n.defaultSection {\r\n    border: 1px solid #bbb;\r\n    padding-bottom: 0;\r\n    margin: 5px;\r\n    width: calc(100% - 10px)\r\n}\r\n.overflowHidden {\r\n    overflow: hidden;\r\n    overflow-x: hidden;\r\n    overflow-y: hidden\r\n}\r\n.flexParent {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    padding: 2px\r\n}\r\n.flexParentInvisible {\r\n    display: flex;\r\n    justify-content: space-between\r\n}\r\n.flexElement {\r\n    flex-basis: 100%\r\n}\r\n.flexPanel {\r\n    flex-basis: 100%\r\n}\r\n.roundedCorners {\r\n    box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);\r\n    transition: .3s;\r\n    border-radius: 5px;\r\n    margin: 5px\r\n}\r\n.defaultHeader {\r\n    padding: 5px;\r\n    margin: 0 0 0 0;\r\n    font-weight: bold\r\n}\r\n.defaultFooter {\r\n    padding-right: 5em;\r\n    text-align: right\r\n}\r\n.clientlogo {\r\n    border: 0;\r\n    padding-left: 0;\r\n    vertical-align: middle\r\n}\r\n.MainLogo {\r\n    border: 0;\r\n    padding-right: 5em;\r\n    text-align: right;\r\n    vertical-align: middle\r\n}\r\n.header {\r\n    background-color: #616a6b;\r\n    color: #f7f9f9\r\n}\r\na.alink:link {\r\n    color: #007bff;\r\n    text-decoration: none;\r\n    font-size: 120%\r\n}\r\na.alink:visited {\r\n    color: #ff8400;\r\n    text-decoration: none;\r\n    font-size: 120%\r\n}\r\na.alink:hover {\r\n    text-decoration: underline;\r\n    font-size: 130%\r\n}\r\na.paginate_button {\r\n    color: #000 !important;\r\n    font-size: 10px\r\n}\r\na.current {\r\n    color: #000 !important\r\n}\r\n.card:hover {\r\n    box-shadow: 0 8px 16px 0 rgba(0,0,0,.2)\r\n}\r\nimg {\r\n    border-radius: 5px 5px 0 0\r\n}\r\n.container {\r\n    padding: 2px 16px\r\n}\r\n.flex-grid {\r\n    display: flex\r\n}\r\n.col {\r\n    padding: 20px;\r\n    margin: 1%;\r\n    flex: 1\r\n}
-        </style><!-- CSS Always Required Default Visual Settings END --><!-- CSS Always Required Default Headings START -->
+            body {
+                font-family: Roboto Condensed,Helvetica Neue,sans-serif;
+                font-size: 8pt
+            }
+            hr {
+                height: 4px;
+                background-color: #6cf;
+                border: 0;
+                width: 100%
+            }
+            .defaultSection {
+                border: 1px solid #bbb;
+                padding-bottom: 0;
+                margin: 5px;
+                width: calc(100% - 10px)
+            }
+            .overflowHidden {
+                overflow: hidden;
+                overflow-x: hidden;
+                overflow-y: hidden
+            }
+            .flexParent {
+                display: flex;
+                justify-content: space-between;
+                padding: 2px
+            }
+            .flexParentInvisible {
+                display: flex;
+                justify-content: space-between
+            }
+            .flexElement {
+                flex-basis: 100%
+            }
+            .flexPanel {
+                flex-basis: 100%
+            }
+            .roundedCorners {
+                box-shadow: 0 4px 8px 0 rgba(0,0,0,.2);
+                transition: .3s;
+                border-radius: 5px;
+                margin: 5px
+            }
+            .defaultHeader {
+                padding: 5px;
+                margin: 0 0 0 0;
+                font-weight: bold
+            }
+            .defaultFooter {
+                padding-right: 5em;
+                text-align: right
+            }
+            .clientlogo {
+                border: 0;
+                padding-left: 0;
+                vertical-align: middle
+            }
+            .MainLogo {
+                border: 0;
+                padding-right: 5em;
+                text-align: right;
+                vertical-align: middle
+            }
+            .header {
+                background-color: #616a6b;
+                color: #f7f9f9
+            }
+            a.alink:link {
+                color: #007bff;
+                text-decoration: none;
+                font-size: 120%
+            }
+            a.alink:visited {
+                color: #ff8400;
+                text-decoration: none;
+                font-size: 120%
+            }
+            a.alink:hover {
+                text-decoration: underline;
+                font-size: 130%
+            }
+            a.paginate_button {
+                color: #000 !important;
+                font-size: 10px
+            }
+            a.current {
+                color: #000 !important
+            }
+            .card:hover {
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,.2)
+            }
+            img {
+                border-radius: 5px 5px 0 0
+            }
+            .container {
+                padding: 2px 16px
+            }
+            .flex-grid {
+                display: flex
+            }
+            .col {
+                padding: 20px;
+                margin: 1%;
+                flex: 1
+            }
+        </style>
+        <!-- CSS Always Required Default Visual Settings END -->
+        <!-- CSS Always Required Default Headings START -->
         <style>
-            h2:after, h3:after, h4:after, h5:after, h6:after {\r\n    position: absolute;\r\n    content: "";\r\n    left: 0;\r\n    top: 0;\r\n    bottom: 0;\r\n    width: 5px;\r\n    border-radius: 2px;\r\n    box-shadow: inset 0 1px 1px rgba(0,0,0,.5),0 1px 1px rgba(255,255,255,.3)\r\n}\r\nh2:after {\r\n    background: #0af\r\n}\r\nh3:after {\r\n    background: #3bf\r\n}\r\nh4:after, h5:after, h6:after {\r\n    background: #6cf\r\n}\r\nh1.white, h2.white, h3.white, h4.white, h5.white, h6.white {\r\n    color: #fff\r\n}\r\nh1, h2, h3, h4, h5, h6 {\r\n    font-family: 'Hammersmith One',sans-serif\r\n}\r\nh1 {\r\n    font-size: 30px;\r\n    line-height: 20px;\r\n    margin: 1em 0 .6em 0;\r\n    font-weight: normal;\r\n    text-shadow: 0 -1px 0 rgba(0,0,0,.4);\r\n    position: relative;\r\n    color: #6cf;\r\n    margin: 10px 10px 10px 10px\r\n}\r\nh2 {\r\n    margin: 1em 0 .6em 0;\r\n    padding: 0 0 0 20px;\r\n    font-weight: normal;\r\n    text-shadow: 0 -1px 0 rgba(0,0,0,.4);\r\n    position: relative;\r\n    font-size: 25px;\r\n    line-height: 20px;\r\n    margin: 10px 10px 10px 10px\r\n}\r\nh3 {\r\n    margin: 1em 0 .6em 0;\r\n    padding: 0 0 0 20px;\r\n    font-weight: normal;\r\n    text-shadow: 0 -1px 0 rgba(0,0,0,.4);\r\n    position: relative;\r\n    font-size: 24px;\r\n    line-height: 20px;\r\n    margin: 10px 10px 10px 10px\r\n}\r\nh4 {\r\n    margin: 1em 0 .6em 0;\r\n    padding: 0 0 0 20px;\r\n    font-weight: normal;\r\n    text-shadow: 0 -1px 0 rgba(0,0,0,.4);\r\n    position: relative;\r\n    font-size: 18px;\r\n    line-height: 16px;\r\n    margin: 10px 10px 10px 10px\r\n}\r\nh5 {\r\n    margin: 1em 0 .6em 0;\r\n    padding: 0 0 0 20px;\r\n    font-weight: normal;\r\n    text-shadow: 0 -1px 0 rgba(0,0,0,.4);\r\n    position: relative;\r\n    font-size: 14px;\r\n    line-height: 16px;\r\n    margin: 10px 10px 10px 10px\r\n}\r\nh6 {\r\n    margin: 1em 0 .6em 0;\r\n    padding: 0 0 0 20px;\r\n    font-weight: normal;\r\n    text-shadow: 0 -1px 0 rgba(0,0,0,.4);\r\n    position: relative;\r\n    font-size: 10px;\r\n    line-height: 12px;\r\n    margin: 10px 10px 10px 10px\r\n}
-        </style><!-- CSS Always Required Default Headings END --><!-- CSS DataTables START -->
+            h2:after, h3:after, h4:after, h5:after, h6:after {
+                position: absolute;
+                content: "";
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 5px;
+                border-radius: 2px;
+                box-shadow: inset 0 1px 1px rgba(0,0,0,.5),0 1px 1px rgba(255,255,255,.3)
+            }
+            h2:after {
+                background: #0af
+            }
+            h3:after {
+                background: #3bf
+            }
+            h4:after, h5:after, h6:after {
+                background: #6cf
+            }
+            h1.white, h2.white, h3.white, h4.white, h5.white, h6.white {
+                color: #fff
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Hammersmith One',sans-serif
+            }
+            h1 {
+                font-size: 30px;
+                line-height: 20px;
+                margin: 1em 0 .6em 0;
+                font-weight: normal;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+                position: relative;
+                color: #6cf;
+                margin: 10px 10px 10px 10px
+            }
+            h2 {
+                margin: 1em 0 .6em 0;
+                padding: 0 0 0 20px;
+                font-weight: normal;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+                position: relative;
+                font-size: 25px;
+                line-height: 20px;
+                margin: 10px 10px 10px 10px
+            }
+            h3 {
+                margin: 1em 0 .6em 0;
+                padding: 0 0 0 20px;
+                font-weight: normal;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+                position: relative;
+                font-size: 24px;
+                line-height: 20px;
+                margin: 10px 10px 10px 10px
+            }
+            h4 {
+                margin: 1em 0 .6em 0;
+                padding: 0 0 0 20px;
+                font-weight: normal;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+                position: relative;
+                font-size: 18px;
+                line-height: 16px;
+                margin: 10px 10px 10px 10px
+            }
+            h5 {
+                margin: 1em 0 .6em 0;
+                padding: 0 0 0 20px;
+                font-weight: normal;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+                position: relative;
+                font-size: 14px;
+                line-height: 16px;
+                margin: 10px 10px 10px 10px
+            }
+            h6 {
+                margin: 1em 0 .6em 0;
+                padding: 0 0 0 20px;
+                font-weight: normal;
+                text-shadow: 0 -1px 0 rgba(0,0,0,.4);
+                position: relative;
+                font-size: 10px;
+                line-height: 12px;
+                margin: 10px 10px 10px 10px
+            }
+        </style>
+        <!-- CSS Always Required Default Headings END -->
+        <!-- CSS DataTables START -->
         <style>
-            td {\r\n    height: 27px\r\n}\r\ntd.sorting_1::before {\r\n    background: #007bff !important\r\n}\r\ntd::before {\r\n    background: #007bff !important\r\n}\r\ndiv.dataTables_wrapper {\r\n    padding: 10px 10px 10px 10px\r\n}\r\nbutton.dt-button {\r\n    color: #00f !important;\r\n    border-radius: 5px;\r\n    line-height: 1 !important\r\n}\r\ntfoot input {\r\n    width: 100%;\r\n    padding: -3px;\r\n    box-sizing: border-box;\r\n    font-size: 8pt\r\n}\r\nthead input {\r\n    width: 100%;\r\n    padding: -3px;\r\n    box-sizing: border-box;\r\n    font-size: 8pt\r\n}
-        </style><!-- CSS DataTables END -->
-        <noscript><!-- CSS DataTables START -->
+            td {
+                height: 27px
+            }
+            td.sorting_1::before {
+                background: #007bff !important
+            }
+            td::before {
+                background: #007bff !important
+            }
+            div.dataTables_wrapper {
+                padding: 10px 10px 10px 10px
+            }
+            button.dt-button {
+                color: #00f !important;
+                border-radius: 5px;
+                line-height: 1 !important
+            }
+            tfoot input {
+                width: 100%;
+                padding: -3px;
+                box-sizing: border-box;
+                font-size: 8pt
+            }
+            thead input {
+                width: 100%;
+                padding: -3px;
+                box-sizing: border-box;
+                font-size: 8pt
+            }
+        </style>
+        <!-- CSS DataTables END -->
+        <noscript>
+            <!-- CSS DataTables START -->
             <style>
-                table {\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-color: #000;\r\n    border-collapse: collapse;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 20px);\r\n    margin: 10px\r\n}\r\ntable th {\r\n    border-width: 1px;\r\n    padding: 4px;\r\n    border-style: solid;\r\n    border-color: #000;\r\n    background-color: #616a6b;\r\n    color: #fff;\r\n    font-weight: bold;\r\n    padding: 10px\r\n}\r\ntable td {\r\n    border-width: 1px;\r\n    padding-right: 2px;\r\n    padding-left: 2px;\r\n    padding-top: 0;\r\n    padding-bottom: 0;\r\n    border-style: solid;\r\n    border-color: #000;\r\n    border-top: 1px solid #ddd\r\n}\r\ntable tr:nth-of-type(odd) {\r\n    background: #eee\r\n}\r\ntable th {\r\n    background: #333;\r\n    color: #fff;\r\n    font-weight: bold\r\n}\r\ntable td, table th {\r\n    padding: 6px;\r\n    border: 1px solid #ccc;\r\n    text-align: left\r\n}
-            </style><!-- CSS DataTables END -->
-        </noscript><!-- CSS Elastic Tabs START -->
+                table {
+                    border-width: 1px;
+                    border-style: solid;
+                    border-color: #000;
+                    border-collapse: collapse;
+                    box-sizing: border-box;
+                    width: calc(100% - 20px);
+                    margin: 10px
+                }
+                table th {
+                    border-width: 1px;
+                    padding: 4px;
+                    border-style: solid;
+                    border-color: #000;
+                    background-color: #616a6b;
+                    color: #fff;
+                    font-weight: bold;
+                    padding: 10px
+                }
+                table td {
+                    border-width: 1px;
+                    padding-right: 2px;
+                    padding-left: 2px;
+                    padding-top: 0;
+                    padding-bottom: 0;
+                    border-style: solid;
+                    border-color: #000;
+                    border-top: 1px solid #ddd
+                }
+                table tr:nth-of-type(odd) {
+                    background: #eee
+                }
+                table th {
+                    background: #333;
+                    color: #fff;
+                    font-weight: bold
+                }
+                table td, table th {
+                    padding: 6px;
+                    border: 1px solid #ccc;
+                    text-align: left
+                }
+            </style>
+            <!-- CSS DataTables END -->
+        </noscript>
+        <!-- CSS Elastic Tabs START -->
         <style>
-            .tabsWrapper {\r\n    text-align: center;\r\n    margin: 10px auto;\r\n    font-family: 'Roboto',sans-serif !important\r\n}\r\n.tabs {\r\n    margin-top: 10px;\r\n    font-size: 15px;\r\n    padding: 0;\r\n    list-style: none;\r\n    background: #fff;\r\n    box-shadow: 0 5px 20px rgba(0,0,0,.1);\r\n    border-radius: 4px;\r\n    position: relative\r\n}\r\n.tabs .round {\r\n    border-radius: 4px\r\n}\r\n.tabs a {\r\n    text-decoration: none;\r\n    color: #777;\r\n    text-transform: uppercase;\r\n    padding: 10px 20px;\r\n    display: inline-block;\r\n    position: relative;\r\n    z-index: 1;\r\n    transition-duration: .6s\r\n}\r\n.tabs a.active {\r\n    color: #fff\r\n}\r\n.tabs a i {\r\n    margin-right: 5px\r\n}\r\n.tabs .selector {\r\n    display: none;\r\n    height: 100%;\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    z-index: 1;\r\n    border-radius: 4px;\r\n    background: #1e90ff\r\n}\r\n.tabs-content {\r\n    display: none\r\n}\r\n.tabs-content.active {\r\n    display: block\r\n}
-        </style><!-- CSS Elastic Tabs END --><!-- CSS DataTables (not really) - Simplified START -->
+            .tabsWrapper {
+                text-align: center;
+                margin: 10px auto;
+                font-family: 'Roboto',sans-serif !important
+            }
+            .tabs {
+                margin-top: 10px;
+                font-size: 15px;
+                padding: 0;
+                list-style: none;
+                background: #fff;
+                box-shadow: 0 5px 20px rgba(0,0,0,.1);
+                border-radius: 4px;
+                position: relative
+            }
+            .tabs .round {
+                border-radius: 4px
+            }
+            .tabs a {
+                text-decoration: none;
+                color: #777;
+                text-transform: uppercase;
+                padding: 10px 20px;
+                display: inline-block;
+                position: relative;
+                z-index: 1;
+                transition-duration: .6s
+            }
+            .tabs a.active {
+                color: #fff
+            }
+            .tabs a i {
+                margin-right: 5px
+            }
+            .tabs .selector {
+                display: none;
+                height: 100%;
+                position: absolute;
+                left: 0;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+                border-radius: 4px;
+                background: #1e90ff
+            }
+            .tabs-content {
+                display: none
+            }
+            .tabs-content.active {
+                display: block
+            }
+        </style>
+        <!-- CSS Elastic Tabs END -->
+        <!-- CSS DataTables (not really) - Simplified START -->
         <style>
-            table.simplify {\r\n    border-width: 1px;\r\n    border-style: solid;\r\n    border-color: #000;\r\n    border-collapse: collapse;\r\n    box-sizing: border-box;\r\n    width: calc(100% - 20px);\r\n    margin: 10px\r\n}\r\ntable.simplify th {\r\n    border-width: 1px;\r\n    padding: 4px;\r\n    border-style: solid;\r\n    border-color: #000;\r\n    background-color: #616a6b;\r\n    color: #fff;\r\n    font-weight: bold;\r\n    padding: 10px\r\n}\r\ntable.simplify td {\r\n    border-width: 1px;\r\n    padding-right: 2px;\r\n    padding-left: 2px;\r\n    padding-top: 0;\r\n    padding-bottom: 0;\r\n    border-style: solid;\r\n    border-color: #000;\r\n    border-top: 1px solid #ddd\r\n}\r\ntable.simplify tr:nth-of-type(odd) {\r\n    background: #eee\r\n}\r\ntable.simplify th {\r\n    background: #333;\r\n    color: #fff;\r\n    font-weight: bold\r\n}\r\ntable.simplify td, table.simplify th {\r\n    padding: 6px;\r\n    border: 1px solid #ccc;\r\n    text-align: left\r\n}
-        </style><!-- CSS DataTables (not really) - Simplified END --><!-- JS Jquery START -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><!-- JS Jquery END --><!-- CSS DataTables START -->
-        <link href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css" type="text/css" rel="stylesheet" /><!-- CSS DataTables END --><!-- JS DataTables START -->
+            table.simplify {
+                border-width: 1px;
+                border-style: solid;
+                border-color: #000;
+                border-collapse: collapse;
+                box-sizing: border-box;
+                width: calc(100% - 20px);
+                margin: 10px
+            }
+            table.simplify th {
+                border-width: 1px;
+                padding: 4px;
+                border-style: solid;
+                border-color: #000;
+                background-color: #616a6b;
+                color: #fff;
+                font-weight: bold;
+                padding: 10px
+            }
+            table.simplify td {
+                border-width: 1px;
+                padding-right: 2px;
+                padding-left: 2px;
+                padding-top: 0;
+                padding-bottom: 0;
+                border-style: solid;
+                border-color: #000;
+                border-top: 1px solid #ddd
+            }
+            table.simplify tr:nth-of-type(odd) {
+                background: #eee
+            }
+            table.simplify th {
+                background: #333;
+                color: #fff;
+                font-weight: bold
+            }
+            table.simplify td, table.simplify th {
+                padding: 6px;
+                border: 1px solid #ccc;
+                text-align: left
+            }
+        </style>
+        <!-- CSS DataTables (not really) - Simplified END -->
+        <!-- JS Jquery START -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <!-- JS Jquery END -->
+        <!-- CSS DataTables START -->
+        <link href="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.css" type="text/css" rel="stylesheet" />
+        <!-- CSS DataTables END -->
+        <!-- JS DataTables START -->
         <script src="https://cdn.datatables.net/v/dt/jq-3.3.1/dt-1.10.18/af-2.3.2/b-1.5.4/b-colvis-1.5.4/b-html5-1.5.4/b-print-1.5.4/cr-1.5.0/fc-3.2.5/fh-3.1.4/kt-2.5.0/r-2.2.2/rg-1.1.0/rr-1.2.4/sc-1.5.0/sl-1.2.6/datatables.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
-        <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script><!-- JS DataTables END --><!-- JS DataTables PDF Features START -->
+        <script src="https://cdn.datatables.net/plug-ins/1.10.19/sorting/datetime-moment.js"></script>
+        <!-- JS DataTables END -->
+        <!-- JS DataTables PDF Features START -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script><!-- JS DataTables PDF Features END --><!-- JS DataTables Excel Features START -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script><!-- JS DataTables Excel Features END -->
-    </head><!-- CSS AUTOGENERATED on DEMAND START --><!-- CSS AUTOGENERATED on DEMAND END --><!-- END HEADER --><!-- BODY -->
-    <body><!-- START LOGO -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <!-- JS DataTables PDF Features END -->
+        <!-- JS DataTables Excel Features START -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+        <!-- JS DataTables Excel Features END -->
+    </head>
+    <!-- CSS AUTOGENERATED on DEMAND START -->
+    <!-- CSS AUTOGENERATED on DEMAND END -->
+    <!-- END HEADER -->
+    <!-- BODY -->
+    <body>
+        <!-- START LOGO -->
         <table>
             <tbody>
                 <tr>
@@ -49,7 +429,8 @@
                     </td>
                 </tr>
             </tbody>
-        </table><!-- END LOGO -->
+        </table>
+        <!-- END LOGO -->
         <div class="tabsWrapper">
             <div class="tabs">
                 <div class="selector"></div><a href="javascript:void(0)" class="active" data-id="Tab-vzty0g1w">
@@ -68,13 +449,46 @@
         <div id="Tab-vzty0g1w" class="tabs-content active">
             <div class="defaultSection roundedCorners overflowHidden">
                 <div class="defaultHeader" style="text-align: center; background-color: #00bfff">
-                    <a name="0 section" style="color: #fff">0 section</a><a id="show_1604832152" href="javascript:void(0)" onclick='show("1604832152")' style="color: #fff; display: none">(Show)</a><a id="hide_1604832152" href="javascript:void(0)" onclick='hide("1604832152")' style="color: #fff; display: none">(Hide)</a>
+                    <a name="0 section" style="color: #fff">0 section</a><a id="show_1604832152" href="javascript:void(0)" onclick='show("1604832152");' style="color: #fff; display: none">(Show)</a><a id="hide_1604832152" href="javascript:void(0)" onclick='hide("1604832152");' style="color: #fff; display: none">(Hide)</a>
                 </div>
                 <div id="1604832152" class="flexParent overflowHidden">
                     <div class="flexParent flexElement collapsable overflowHidden" id="1604832152">
                         <div class="flexPanel overflowHidden roundedCorners overflowHidden">
                             <script>
-                                $(document).ready(function() {\r\n    $.fn.dataTable.moment("L");\r\n    var n = $("#DT-xOCgDqjI").DataTable({\r\n            dom: "Bfrtip", buttons: [{extend: "copyHtml5"}, {extend: "excelHtml5"}, {extend: "csvHtml5"}, {\r\n                        orientation: "landscape", extend: "pdfHtml5", pageSize: "A3"\r\n                    }, {extend: "pageLength"}], colReorder: !0, paging: !1, scrollCollapse: !1, pagingType: ["full_numbers"], lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]], ordering: !0, order: [], info: !0, procesing: !0, select: !0, searching: !0, stateSave: !0, responsive: {details: {type: "inline"}}, createdRow: ""\r\n        })\r\n})
+                                $(document).ready(function() {
+                                    $.fn.dataTable.moment("L");
+                                    var table = $("#DT-xOCgDqjI").DataTable({
+                                            dom: "Bfrtip",
+                                            buttons: [
+                                                { extend: "copyHtml5" },
+                                                { extend: "excelHtml5" },
+                                                { extend: "csvHtml5" },
+                                                {
+                                                    orientation: "landscape",
+                                                    extend: "pdfHtml5",
+                                                    pageSize: "A3"
+                                                },
+                                                { extend: "pageLength" }
+                                            ],
+                                            colReorder: !0,
+                                            paging: !1,
+                                            scrollCollapse: !1,
+                                            pagingType: ["full_numbers"],
+                                            lengthMenu: [
+                                                [15, 25, 50, 100, -1],
+                                                [15, 25, 50, 100, "All"]
+                                            ],
+                                            ordering: !0,
+                                            order: [],
+                                            info: !0,
+                                            procesing: !0,
+                                            select: !0,
+                                            searching: !0,
+                                            stateSave: !0,
+                                            responsive: { details: { type: "inline" } },
+                                            createdRow: ""
+                                        })
+                                });
                             </script>
                             <div class="flexElement overflowHidden">
                                 <table id="DT-xOCgDqjI" class="display compact">
@@ -501,7 +915,40 @@
                         </div>
                         <div class="flexPanel overflowHidden roundedCorners overflowHidden">
                             <script>
-                                $(document).ready(function() {\r\n    $.fn.dataTable.moment("L");\r\n    var n = $("#DT-CkZYolEN").DataTable({\r\n            dom: "Bfrtip", buttons: [{extend: "copyHtml5"}, {extend: "excelHtml5"}, {extend: "csvHtml5"}, {\r\n                        orientation: "landscape", extend: "pdfHtml5", pageSize: "A3"\r\n                    }, {extend: "pageLength"}], colReorder: !0, paging: !1, scrollCollapse: !1, pagingType: ["full_numbers"], lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]], ordering: !0, order: [], info: !0, procesing: !0, select: !0, searching: !0, stateSave: !0, responsive: {details: {type: "inline"}}, createdRow: ""\r\n        })\r\n})
+                                $(document).ready(function() {
+                                    $.fn.dataTable.moment("L");
+                                    var table = $("#DT-CkZYolEN").DataTable({
+                                            dom: "Bfrtip",
+                                            buttons: [
+                                                { extend: "copyHtml5" },
+                                                { extend: "excelHtml5" },
+                                                { extend: "csvHtml5" },
+                                                {
+                                                    orientation: "landscape",
+                                                    extend: "pdfHtml5",
+                                                    pageSize: "A3"
+                                                },
+                                                { extend: "pageLength" }
+                                            ],
+                                            colReorder: !0,
+                                            paging: !1,
+                                            scrollCollapse: !1,
+                                            pagingType: ["full_numbers"],
+                                            lengthMenu: [
+                                                [15, 25, 50, 100, -1],
+                                                [15, 25, 50, 100, "All"]
+                                            ],
+                                            ordering: !0,
+                                            order: [],
+                                            info: !0,
+                                            procesing: !0,
+                                            select: !0,
+                                            searching: !0,
+                                            stateSave: !0,
+                                            responsive: { details: { type: "inline" } },
+                                            createdRow: ""
+                                        })
+                                });
                             </script>
                             <div class="flexElement overflowHidden">
                                 <table id="DT-CkZYolEN" class="display compact">
@@ -1352,7 +1799,40 @@
                         </div>
                         <div class="flexPanel overflowHidden roundedCorners overflowHidden">
                             <script>
-                                $(document).ready(function() {\r\n    $.fn.dataTable.moment("L");\r\n    var n = $("#DT-eGcEYgvT").DataTable({\r\n            dom: "Bfrtip", buttons: [{extend: "copyHtml5"}, {extend: "excelHtml5"}, {extend: "csvHtml5"}, {\r\n                        orientation: "landscape", extend: "pdfHtml5", pageSize: "A3"\r\n                    }, {extend: "pageLength"}], colReorder: !0, paging: !1, scrollCollapse: !1, pagingType: ["full_numbers"], lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]], ordering: !0, order: [], info: !0, procesing: !0, select: !0, searching: !0, stateSave: !0, responsive: {details: {type: "inline"}}, createdRow: ""\r\n        })\r\n})
+                                $(document).ready(function() {
+                                    $.fn.dataTable.moment("L");
+                                    var table = $("#DT-eGcEYgvT").DataTable({
+                                            dom: "Bfrtip",
+                                            buttons: [
+                                                { extend: "copyHtml5" },
+                                                { extend: "excelHtml5" },
+                                                { extend: "csvHtml5" },
+                                                {
+                                                    orientation: "landscape",
+                                                    extend: "pdfHtml5",
+                                                    pageSize: "A3"
+                                                },
+                                                { extend: "pageLength" }
+                                            ],
+                                            colReorder: !0,
+                                            paging: !1,
+                                            scrollCollapse: !1,
+                                            pagingType: ["full_numbers"],
+                                            lengthMenu: [
+                                                [15, 25, 50, 100, -1],
+                                                [15, 25, 50, 100, "All"]
+                                            ],
+                                            ordering: !0,
+                                            order: [],
+                                            info: !0,
+                                            procesing: !0,
+                                            select: !0,
+                                            searching: !0,
+                                            stateSave: !0,
+                                            responsive: { details: { type: "inline" } },
+                                            createdRow: ""
+                                        })
+                                });
                             </script>
                             <div class="flexElement overflowHidden">
                                 <table id="DT-eGcEYgvT" class="display compact">
@@ -1784,13 +2264,49 @@
         <div id="Tab-r5jswyno" class="tabs-content">
             <div class="defaultSection roundedCorners overflowHidden">
                 <div class="defaultHeader" style="text-align: center; background-color: #00bfff">
-                    <a name="1 section" style="color: #fff">1 section</a><a id="show_1056874410" href="javascript:void(0)" onclick='show("1056874410")' style="color: #fff; display: none">(Show)</a><a id="hide_1056874410" href="javascript:void(0)" onclick='hide("1056874410")' style="color: #fff; display: none">(Hide)</a>
+                    <a name="1 section" style="color: #fff">1 section</a><a id="show_1056874410" href="javascript:void(0)" onclick='show("1056874410");' style="color: #fff; display: none">(Show)</a><a id="hide_1056874410" href="javascript:void(0)" onclick='hide("1056874410");' style="color: #fff; display: none">(Hide)</a>
                 </div>
                 <div id="1056874410" class="flexParent overflowHidden">
                     <div class="flexParent flexElement collapsable overflowHidden" id="1056874410">
                         <div class="flexPanel overflowHidden roundedCorners overflowHidden">
                             <script>
-                                $(document).ready(function() {\r\n    $.fn.dataTable.moment("L");\r\n    $(".tabs").on("click", "a", function(n) {\r\n        if ($(n.currentTarget).attr("data-id") == "Tab-r5jswyno" && !$.fn.dataTable.isDataTable("#DT-WkqiWXLr"))\r\n            var t = $("#DT-WkqiWXLr").DataTable({\r\n                    dom: "Bfrtip", buttons: [{extend: "copyHtml5"}, {extend: "excelHtml5"}, {extend: "csvHtml5"}, {\r\n                                orientation: "landscape", extend: "pdfHtml5", pageSize: "A3"\r\n                            }, {extend: "pageLength"}], colReorder: !0, paging: !1, scrollCollapse: !1, pagingType: ["full_numbers"], lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]], ordering: !0, order: [], info: !0, procesing: !0, select: !0, searching: !0, stateSave: !0, responsive: {details: {type: "inline"}}, createdRow: ""\r\n                })\r\n    })\r\n})
+                                $(document).ready(function() {
+                                    $.fn.dataTable.moment("L");
+                                    $(".tabs").on("click", "a", function(event) {
+                                        if ($(event.currentTarget).attr("data-id") == "Tab-r5jswyno" && !$.fn.dataTable.isDataTable("#DT-WkqiWXLr"))
+                                            var table = $("#DT-WkqiWXLr").DataTable({
+                                                    dom: "Bfrtip",
+                                                    buttons: [
+                                                        { extend: "copyHtml5" },
+                                                        { extend: "excelHtml5" },
+                                                        { extend: "csvHtml5" },
+                                                        {
+                                                            orientation: "landscape",
+                                                            extend: "pdfHtml5",
+                                                            pageSize: "A3"
+                                                        },
+                                                        { extend: "pageLength" }
+                                                    ],
+                                                    colReorder: !0,
+                                                    paging: !1,
+                                                    scrollCollapse: !1,
+                                                    pagingType: ["full_numbers"],
+                                                    lengthMenu: [
+                                                        [15, 25, 50, 100, -1],
+                                                        [15, 25, 50, 100, "All"]
+                                                    ],
+                                                    ordering: !0,
+                                                    order: [],
+                                                    info: !0,
+                                                    procesing: !0,
+                                                    select: !0,
+                                                    searching: !0,
+                                                    stateSave: !0,
+                                                    responsive: { details: { type: "inline" } },
+                                                    createdRow: ""
+                                                })
+                                    })
+                                });
                             </script>
                             <div class="flexElement overflowHidden">
                                 <table id="DT-WkqiWXLr" class="display compact">
@@ -2217,7 +2733,43 @@
                         </div>
                         <div class="flexPanel overflowHidden roundedCorners overflowHidden">
                             <script>
-                                $(document).ready(function() {\r\n    $.fn.dataTable.moment("L");\r\n    $(".tabs").on("click", "a", function(n) {\r\n        if ($(n.currentTarget).attr("data-id") == "Tab-r5jswyno" && !$.fn.dataTable.isDataTable("#DT-QwCzEbHY"))\r\n            var t = $("#DT-QwCzEbHY").DataTable({\r\n                    dom: "Bfrtip", buttons: [{extend: "copyHtml5"}, {extend: "excelHtml5"}, {extend: "csvHtml5"}, {\r\n                                orientation: "landscape", extend: "pdfHtml5", pageSize: "A3"\r\n                            }, {extend: "pageLength"}], colReorder: !0, paging: !1, scrollCollapse: !1, pagingType: ["full_numbers"], lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]], ordering: !0, order: [], info: !0, procesing: !0, select: !0, searching: !0, stateSave: !0, responsive: {details: {type: "inline"}}, createdRow: ""\r\n                })\r\n    })\r\n})
+                                $(document).ready(function() {
+                                    $.fn.dataTable.moment("L");
+                                    $(".tabs").on("click", "a", function(event) {
+                                        if ($(event.currentTarget).attr("data-id") == "Tab-r5jswyno" && !$.fn.dataTable.isDataTable("#DT-QwCzEbHY"))
+                                            var table = $("#DT-QwCzEbHY").DataTable({
+                                                    dom: "Bfrtip",
+                                                    buttons: [
+                                                        { extend: "copyHtml5" },
+                                                        { extend: "excelHtml5" },
+                                                        { extend: "csvHtml5" },
+                                                        {
+                                                            orientation: "landscape",
+                                                            extend: "pdfHtml5",
+                                                            pageSize: "A3"
+                                                        },
+                                                        { extend: "pageLength" }
+                                                    ],
+                                                    colReorder: !0,
+                                                    paging: !1,
+                                                    scrollCollapse: !1,
+                                                    pagingType: ["full_numbers"],
+                                                    lengthMenu: [
+                                                        [15, 25, 50, 100, -1],
+                                                        [15, 25, 50, 100, "All"]
+                                                    ],
+                                                    ordering: !0,
+                                                    order: [],
+                                                    info: !0,
+                                                    procesing: !0,
+                                                    select: !0,
+                                                    searching: !0,
+                                                    stateSave: !0,
+                                                    responsive: { details: { type: "inline" } },
+                                                    createdRow: ""
+                                                })
+                                    })
+                                });
                             </script>
                             <div class="flexElement overflowHidden">
                                 <table id="DT-QwCzEbHY" class="display compact">
@@ -2644,7 +3196,43 @@
                         </div>
                         <div class="flexPanel overflowHidden roundedCorners overflowHidden">
                             <script>
-                                $(document).ready(function() {\r\n    $.fn.dataTable.moment("L");\r\n    $(".tabs").on("click", "a", function(n) {\r\n        if ($(n.currentTarget).attr("data-id") == "Tab-r5jswyno" && !$.fn.dataTable.isDataTable("#DT-KrIOpBPP"))\r\n            var t = $("#DT-KrIOpBPP").DataTable({\r\n                    dom: "Bfrtip", buttons: [{extend: "copyHtml5"}, {extend: "excelHtml5"}, {extend: "csvHtml5"}, {\r\n                                orientation: "landscape", extend: "pdfHtml5", pageSize: "A3"\r\n                            }, {extend: "pageLength"}], colReorder: !0, paging: !1, scrollCollapse: !1, pagingType: ["full_numbers"], lengthMenu: [[15, 25, 50, 100, -1], [15, 25, 50, 100, "All"]], ordering: !0, order: [], info: !0, procesing: !0, select: !0, searching: !0, stateSave: !0, responsive: {details: {type: "inline"}}, createdRow: ""\r\n                })\r\n    })\r\n})
+                                $(document).ready(function() {
+                                    $.fn.dataTable.moment("L");
+                                    $(".tabs").on("click", "a", function(event) {
+                                        if ($(event.currentTarget).attr("data-id") == "Tab-r5jswyno" && !$.fn.dataTable.isDataTable("#DT-KrIOpBPP"))
+                                            var table = $("#DT-KrIOpBPP").DataTable({
+                                                    dom: "Bfrtip",
+                                                    buttons: [
+                                                        { extend: "copyHtml5" },
+                                                        { extend: "excelHtml5" },
+                                                        { extend: "csvHtml5" },
+                                                        {
+                                                            orientation: "landscape",
+                                                            extend: "pdfHtml5",
+                                                            pageSize: "A3"
+                                                        },
+                                                        { extend: "pageLength" }
+                                                    ],
+                                                    colReorder: !0,
+                                                    paging: !1,
+                                                    scrollCollapse: !1,
+                                                    pagingType: ["full_numbers"],
+                                                    lengthMenu: [
+                                                        [15, 25, 50, 100, -1],
+                                                        [15, 25, 50, 100, "All"]
+                                                    ],
+                                                    ordering: !0,
+                                                    order: [],
+                                                    info: !0,
+                                                    procesing: !0,
+                                                    select: !0,
+                                                    searching: !0,
+                                                    stateSave: !0,
+                                                    responsive: { details: { type: "inline" } },
+                                                    createdRow: ""
+                                                })
+                                    })
+                                });
                             </script>
                             <div class="flexElement overflowHidden">
                                 <table id="DT-KrIOpBPP" class="display compact">
@@ -3073,10 +3661,46 @@
                 </div>
             </div>
         </div>
-    </body><!-- END BODY --><!-- FOOTER -->
-    <footer><!-- JS Elastic Tabs START -->
+    </body>
+    <!-- END BODY -->
+    <!-- FOOTER -->
+    <footer>
+        <!-- JS Elastic Tabs START -->
         <script>
-            function setSelectorPosition(n) {\r\n    var t = $(".tabs").find("[data-id='" + n + "']"),\r\n        r = t.innerWidth(),\r\n        i = t.position();\r\n    $(".selector").css({\r\n        left: i.left + "px", top: i.top + "px", width: t.innerWidth() + "px", height: t.innerHeight() + "px"\r\n    });\r\n    $(".selector").show()\r\n}\r\nvar maxWidth = 0,\r\n    $element,\r\n    activeItem,\r\n    id;\r\n$(window).on("resize", function() {\r\n    $(".selector").hide();\r\n    var n = $(".tabs a[class*='active']"),\r\n        t = n.data("id");\r\n    setSelectorPosition(t)\r\n});\r\nactiveItem = $(".tabs a[class*='active']");\r\nid = activeItem.data("id");\r\nsetSelectorPosition(id);\r\n$(".tabs").on("click", "a", function(n) {\r\n    n.preventDefault();\r\n    $(".tabs a").removeClass("active");\r\n    $(this).addClass("active");\r\n    var t = $(this).data("id");\r\n    setSelectorPosition(t);\r\n    $(".tabs-content").hide();\r\n    $("#" + t).show()\r\n})
-        </script><!-- JS Elastic Tabs END -->
-    </footer><!-- END FOOTER -->
+            var maxWidth = 0,
+                $element;
+            $(window).on("resize", function() {
+                $(".selector").hide();
+                var activeItem = $(".tabs a[class*='active']"),
+                    id = activeItem.data("id");
+                setSelectorPosition(id)
+            });
+            var activeItem = $(".tabs a[class*='active']"),
+                id = activeItem.data("id");
+            setSelectorPosition(id);
+            $(".tabs").on("click", "a", function(e) {
+                e.preventDefault();
+                $(".tabs a").removeClass("active");
+                $(this).addClass("active");
+                var id = $(this).data("id");
+                setSelectorPosition(id);
+                $(".tabs-content").hide();
+                $("#" + id).show()
+            });
+            function setSelectorPosition(id) {
+                var activeItem = $(".tabs").find("[data-id='" + id + "']"),
+                    activeWidth = activeItem.innerWidth(),
+                    itemPos = activeItem.position();
+                $(".selector").css({
+                    left: itemPos.left + "px",
+                    top: itemPos.top + "px",
+                    width: activeItem.innerWidth() + "px",
+                    height: activeItem.innerHeight() + "px"
+                });
+                $(".selector").show()
+            }
+        </script>
+        <!-- JS Elastic Tabs END -->
+    </footer>
+    <!-- END FOOTER -->
 </html>
