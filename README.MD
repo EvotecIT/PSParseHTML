@@ -27,7 +27,7 @@
 - Convert-HTMLToText
 - ConvertFrom-HtmlTable
 - ConvertFrom-HTMLAttributes
-- ConvertFrom-HTML
+- ConvertFrom-HTML (aliases: `ConvertFrom-HTMLTag`, `ConvertFrom-HTMLClass`)
 - Format-CSS
 - Format-HTML
 - Format-JavaScript
@@ -36,15 +36,7 @@
 - Optimize-JavaScript
 
 The expected input is a string or from a file. The expected output to string or to file.
-
-## Table of contents
-
-- [PSParseHTML](#psparsehtml)
-  - [Table of contents](#table-of-contents)
-  - [Installation](#installation)
-    - [Install from PSGallery](#install-from-psgallery)
-    - [Update from PSGallery](#update-from-psgallery)
-  - [3rd party references](#3rd-party-references)
+While it doesn't seem much those 10 functions are very powerful and can achieve a lot when it comes to parsing HTML.
 
 ## Installation
 
@@ -68,9 +60,11 @@ That's it. Whenever there's a new version you simply run the command and you can
 
 ## 3rd party references
 
-This module uses several external libraries to do its work. The authors of those libraries made a fantastic job. I've just added some PowerShell to the mix.
+This module uses several external libraries to do its work. The authors of those libraries made a fantastic job.
+I've just added some PowerShell to the mix.
 
 - [AngleSharp](https://github.com/AngleSharp/AngleSharp) - MIT License
+- [AngleSharp CSS](https://github.com/AngleSharp/AngleSharp.Css) - MIT License
 - [Jsbeautifier](https://github.com/denis-ivanov/Jsbeautifier) - MIT License
 - [NUglify](https://github.com/trullock/NUglify) - BSD-Clause 2 license
 - [Html Agility Pack](https://github.com/zzzprojects/html-agility-pack) - MIT License
