@@ -9,22 +9,28 @@
     )
     Begin {
         # Workaround for Agility Pack
+        # https://www.codetable.net/decimal/173
         $Replacements = @{
-            "&#91;"  = "[";
-            "&#93;"  = "]";
             "&#60;"  = "<";
             "&#62;"  = ">";
+            "&#32;"  = " ";
+            "&#31;"  = "?";
             "&#34;"  = "\";
             "&#39;"  = "'";
             "&#38;"  = "&";
             "&#40;"  = "(";
             "&#41;"  = ")";
+            "&#58;"  = ":";
+            "&#59;"  = ";";
+            "&#61;"  = "=";
+            "&#91;"  = "[";
+            "&#93;"  = "]";
             "&#123;" = "{";
             "&#125;" = "}";
             "&#124;" = "|";
-            "&#58;"  = ":";
-            "&#61;"  = "=";
             "&#160;" = " ";
+            "&#173;" = "-";
+            "&amp;"  = "&";
         }
     }
     Process {
@@ -45,23 +51,6 @@
             $HtmlWeb.AutoDetectEncoding = $false
             $HtmlWeb.OverrideEncoding = $DetectedEncoding
             [HtmlAgilityPack.HtmlDocument] $HtmlDocument = $HtmlWeb.Load($url)
-
-
-            # [HtmlAgilityPack.HtmlWeb] $HtmlWeb = [HtmlAgilityPack.HtmlWeb]::new()
-            # $HtmlWeb.OverrideEncoding = [System.Text.Encoding]::UTF8
-            # $HtmlWeb.AutoDetectEncoding = $false
-
-            # [HtmlAgilityPack.HtmlDocument] $HtmlDocument = [HtmlAgilityPack.HtmlDocument]::new()
-            # $HtmlDocument.OptionOutputAsXml = $true
-            # $HtmlDocument.OptionReadEncoding = $true
-            # $HtmlDocument.OptionFixNestedTags = $true
-            # $HtmlDocument.OptionDefaultStreamEncoding = [System.Text.Encoding]::UTF8
-            # $HtmlDocument.Load($Url)
-
-            # $Content = (Invoke-WebRequest -Uri $Url)
-            # [HtmlAgilityPack.HtmlDocument] $HtmlDocument = [HtmlAgilityPack.HtmlDocument]::new()
-            # #$HtmlDocument.Load
-            # $HtmlDocument.LoadHtml($Content)
         }
         [Array] $Tables = $HtmlDocument.DocumentNode.SelectNodes("//table")
 
@@ -76,10 +65,12 @@
                     $TableContent = foreach ($Row in $Rows) {
                         $Count++
 
-                        #for ($x = 0; $x -lt $headers.count; $x++) {
-                        # if ($($headers[$x])) {
-                        # $obj["$($headers[$x])"] = $row.SelectNodes("th|td")[$x].InnerText.Trim()
                         [string] $CellHeader = $row.SelectNodes("th").InnerText
+                        # Converting to Unicode Decimal Code
+                        foreach ($R in $Replacements.Keys) {
+                            $CellHeader = $CellHeader -replace $R, $Replacements[$R]
+                        }
+
                         [string] $CellContent = $row.SelectNodes("td").InnerText
                         $CellContent = $CellContent.Trim()
                         if ($ReplaceContent) {
@@ -97,13 +88,7 @@
                         } else {
                             $obj["$Count"] = $CellContent
                         }
-                        #  } else {
-                        #    $obj["$x"] = $row.SelectNodes("th|td")[$x].InnerText.Trim()
-                        # }
-                        #}
-
                     }
-                    #[PSCustomObject] $obj
                     $obj
                 )
             } else {
