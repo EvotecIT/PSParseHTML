@@ -9,32 +9,34 @@ $Configuration = @{
         FunctionsToExport = 'Public'
         AliasesToExport   = 'Public'
 
-        LibrariesCore     = 'Lib\Standard'
-        LibrariesDefault  = 'Lib\Standard'
+        #LibrariesCore     = 'Lib\Standard'
+        #LibrariesDefault  = 'Lib\Standard'
 
         Manifest          = @{
             # Minimum version of the Windows PowerShell engine required by this module
-            PowerShellVersion    = '5.1'
+            PowerShellVersion      = '5.1'
             # Supported PSEditions
-            CompatiblePSEditions = @('Desktop', 'Core')
+            CompatiblePSEditions   = @('Desktop', 'Core')
             # ID used to uniquely identify this module
-            GUID                 = 'f0387960-7034-4918-a1e1-d5847cbf90df'
+            GUID                   = 'f0387960-7034-4918-a1e1-d5847cbf90df'
             # Version number of this module.
-            ModuleVersion        = '0.0.X'
+            ModuleVersion          = '0.0.X'
             # Author of this module
-            Author               = 'Przemyslaw Klys'
+            Author                 = 'Przemyslaw Klys'
             # Company or vendor of this module
-            CompanyName          = 'Evotec'
+            CompanyName            = 'Evotec'
             # Copyright statement for this module
-            Copyright            = '(c) Przemyslaw Klys. All rights reserved.'
+            Copyright              = '(c) Przemyslaw Klys. All rights reserved.'
             # Description of the functionality provided by this module
-            Description          = 'Module that allows to manipulate, parse, format and optimize HTML, JavaScript and CSS'
+            Description            = 'Module that allows to manipulate, parse, format and optimize HTML, JavaScript and CSS'
             # Tags applied to this module. These help with module discovery in online galleries.
-            Tags                 = @('HTML', 'WWW', 'JavaScript', 'CSS', 'Windows', 'MacOS', 'Linux')
+            Tags                   = @('HTML', 'WWW', 'JavaScript', 'CSS', 'Windows', 'MacOS', 'Linux')
             # A URL to the main website for this project.
-            ProjectUri           = 'https://github.com/EvotecIT/PSParseHTML'
+            ProjectUri             = 'https://github.com/EvotecIT/PSParseHTML'
 
-            IconUri              = 'https://evotec.xyz/wp-content/uploads/2018/12/PSWriteHTML.png'
+            IconUri                = 'https://evotec.xyz/wp-content/uploads/2018/12/PSWriteHTML.png'
+
+            DotNetFrameworkVersion = '4.7.2'
         }
     }
     Options     = @{
