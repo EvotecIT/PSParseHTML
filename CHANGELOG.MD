@@ -3,6 +3,7 @@
 #### - 0.0.22 - 2022.05.01
   - Fixes a conflict with the DLL's not properly loading in both **Windows PowerShell** and **PowerShell 6/7** scenarios
   - Using separate DLLs for **Windows PowerShell** and **PowerShell 6/7**
+  - Added detection of net framework and requirement to 4.7.2 when using Windows PowerShell
 
 #### - 0.0.21 - 2022.05.01
   - Fixes issue with ConvertFrom-HTMLTable when using AgilityPack. Using **AgilityPack** for HTML parsing would fail to detect encoding or convert special chars. This release fixes this.
