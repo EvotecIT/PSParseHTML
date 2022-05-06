@@ -26,8 +26,8 @@
 
 - Convert-HTMLToText
 - ConvertFrom-HtmlTable
-- ConvertFrom-HTMLAttributes
-- ConvertFrom-HTML (aliases: `ConvertFrom-HTMLTag`, `ConvertFrom-HTMLClass`)
+- ConvertFrom-HTMLAttributes (aliases: `ConvertFrom-HTMLTag`, `ConvertFrom-HTMLClass`)
+- ConvertFrom-HTML
 - Format-CSS
 - Format-HTML
 - Format-JavaScript
