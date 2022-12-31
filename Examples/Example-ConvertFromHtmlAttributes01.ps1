@@ -1,18 +1,11 @@
 ﻿Import-Module .\PSParseHTML.psd1 -Force
 
-<#
+
 $URL = "https://www.dailydairyreport.com"
 $html = (Invoke-WebRequest -Uri $UrL).Content
 
 ConvertFrom-HTMLAttributes -Content $HTML -Class 'banner-text-info'
 
-$URL = "https://www.kintai-driver.com/"
-$html = (Invoke-WebRequest -Uri $UrL).Content
-
-ConvertFrom-HTMLAttributes -Content $HTML -Class 'phone-contact'
-#>
-
-<#
 $URL = "https://www.remotespark.com/view/new.html"
 $html = (Invoke-WebRequest -Uri $UrL).Content
 
@@ -22,4 +15,3 @@ foreach ($O in $Output) {
     $List = ConvertFrom-HTMLAttributes -Content $O.InnerHtml -Tag 'ol'
     $List
 }
-#>
