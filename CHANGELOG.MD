@@ -1,6 +1,6 @@
 ﻿## ChangeLog
 
-#### 0.0.23 - 2022.12.31
+#### 0.0.24 - 2022.12.31
 - 👍 Update nuget HtmlAgilityPack to `1.11.46`
 - 👍 Update nuget Nuglify to `1.20.4`
 - 🪲 Fixes `ConvertFrom-HTML` when used with Content
