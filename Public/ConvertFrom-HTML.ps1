@@ -68,11 +68,11 @@
             } else {
                 [HtmlAgilityPack.HtmlWeb] $HtmlWeb = [HtmlAgilityPack.HtmlWeb]::new()
                 [HtmlAgilityPack.HtmlDocument] $HtmlDocument = $HtmlWeb.Load($url)
-                if ($Raw) {
-                    $HtmlDocument
-                } else {
-                    $HTMLDocument.DocumentNode
-                }
+            }
+            if ($Raw) {
+                $HtmlDocument
+            } else {
+                $HTMLDocument.DocumentNode
             }
         }
     }
