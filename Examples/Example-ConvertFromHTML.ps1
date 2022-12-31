@@ -1,9 +1,13 @@
 ﻿Import-Module .\PSParseHTML.psd1 -Force
 
 # Option 1 - uses Agility Pack
-$PageHTML = ConvertFrom-HTML -URL "https://www.evotec.xyz"
+$PageHTMLUrl = ConvertFrom-HTML -URL "https://www.evotec.xyz"
+$PageHTMLUrl
+
+# Option 1 - uses Agility Pack
+$PageHTML = ConvertFrom-HTML -Content "<html><body><p>Test</p></body></html>"
 $PageHTML
 
 # Option 2 - uses AngleSharp
-$PageHTML = ConvertFrom-HTML -URL "https://www.evotec.xyz" -Engine AngleSharp
-$PageHTML
+$PageHTMLUrl2 = ConvertFrom-HTML -URL "https://www.evotec.xyz" -Engine AngleSharp
+$PageHTMLUrl2
