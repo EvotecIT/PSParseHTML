@@ -3,16 +3,16 @@ Import-Module "C:\Support\GitHub\PSPublishModule\PSPublishModule.psm1" -Force
 
 $Configuration = @{
     Information = @{
-        ModuleName        = 'PSParseHTML'
+        ModuleName = 'PSParseHTML'
 
-        DirectoryProjects = 'C:\Support\GitHub'
-        FunctionsToExport = 'Public'
-        AliasesToExport   = 'Public'
+        #DirectoryProjects = 'C:\Support\GitHub'
+        #FunctionsToExport = 'Public'
+        #AliasesToExport   = 'Public'
 
         #LibrariesCore     = 'Lib\Standard'
         #LibrariesDefault  = 'Lib\Standard'
 
-        Manifest          = @{
+        Manifest   = @{
             # Minimum version of the Windows PowerShell engine required by this module
             PowerShellVersion      = '5.1'
             # Supported PSEditions
@@ -150,10 +150,10 @@ $Configuration = @{
         }
         BuildDocumentation = $false
         PublishModule      = @{
-            Enabled      = $true
+            Enabled      = $false
             Prerelease   = ''
             RequireForce = $false
-            GitHub       = $true
+            GitHub       = $false
         }
     }
 }
