@@ -1,5 +1,8 @@
 ﻿## ChangeLog
 
+#### 0.0.25 - 2023.01.15
+- Fixes library loading issue
+
 #### 0.0.24 - 2022.12.31
 - 👍 Update nuget HtmlAgilityPack to `1.11.46`
 - 👍 Update nuget Nuglify to `1.20.4`
