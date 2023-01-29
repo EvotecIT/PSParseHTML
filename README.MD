@@ -22,7 +22,7 @@
 
 **PSParseHTML** started as a suite of data processing Cmdlets to help [PSWriteHTML](https://github.com/EvotecIT/PSWriteHTML), but it has gained functionality enough to be its own module. Basic usage instructions are described [on this blog post](https://evotec.xyz/formatting-and-minifying-resources-html-css-javascript-with-powershell/).
 
-**PSParseHTML** has ten (10) functions `Find-Module -Name PSParseHTML | ForEach-Object { $_.AdditionalMetadata.Functions -split ' ' }`:
+**PSParseHTML** provides the following ten (10) functions:
 
 - Convert-HTMLToText
 - ConvertFrom-HtmlTable
