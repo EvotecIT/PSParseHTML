@@ -1,7 +1,4 @@
-﻿#Requires -Modules Pester
-Import-Module $PSScriptRoot\..\PSParseHTML.psd1
-
-Describe 'Format-JS' {
+﻿Describe 'Format-JS' {
     It 'Given minified JS content - Should Format it' {
         $CompareTo = @"
 (function() {
