@@ -89,27 +89,28 @@ Build-Module -ModuleName 'PSParseHTML' {
         MergeModuleOnBuild                = $true
         MergeFunctionsFromApprovedModules = $true
         CertificateThumbprint             = '483292C9E317AA13B07BB7A96AE9D1A5ED9E7703'
-        #DotSourceLibraries                = $false
+        #DotSourceLibraries                = $true
         #DotSourceClasses                  = $false
-        SeparateFileLibraries             = $true
+        #SeparateFileLibraries             = $true
         #DeleteTargetModuleBeforeBuild     = $true
 
         ResolveBinaryConflicts            = $true
         ResolveBinaryConflictsName        = 'PSParseHTML'
         NETProjectName                    = 'PSParseHTML'
         NETConfiguration                  = 'Release'
-        NETFramework                      = 'netstandard2.0'
+        NETFramework                      = 'netstandard2.0' #, 'net472'
         #NETExcludeMainLibrary             = $true
         NETExcludeLibraryFilter           = @(
             'System.Management.*.dll'
         )
         DotSourceLibraries                = $true
-        DotSourceClasses                  = $true
+        #DotSourceClasses                  = $true
         #SeparateFileLibraries             = $true
         DeleteTargetModuleBeforeBuild     = $true
+        #MergeLibraryDebugging             = $true
     }
 
-    New-ConfigurationBuild @newConfigurationBuildSplat  #-DotSourceLibraries -DotSourceClasses -MergeModuleOnBuild -Enable -SignModule -DeleteTargetModuleBeforeBuild -CertificateThumbprint '483292C9E317AA13B07BB7A96AE9D1A5ED9E7703' -MergeFunctionsFromApprovedModules
+    New-ConfigurationBuild @newConfigurationBuildSplat
 
     $newConfigurationArtefactSplat = @{
         Type                = 'Unpacked'
