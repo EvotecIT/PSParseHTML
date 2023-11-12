@@ -6,7 +6,10 @@
         [System.Collections.IDictionary] $ReplaceContent,
         [System.Collections.IDictionary] $ReplaceHeaders
     )
-    Begin { }
+    Begin {
+        $TemporaryProgress = $ProgressPreference
+        $ProgressPreference = 'SilentlyContinue'
+    }
     Process {
         if ($Url) {
             $Content = (Invoke-WebRequest -Uri $Url).Content
@@ -68,5 +71,7 @@
             }
         }
     }
-    End { }
+    End {
+        $ProgressPreference = $TemporaryProgress
+    }
 }
