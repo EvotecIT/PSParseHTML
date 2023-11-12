@@ -51,6 +51,15 @@
             $HtmlWeb.AutoDetectEncoding = $false
             $HtmlWeb.OverrideEncoding = $DetectedEncoding
             [HtmlAgilityPack.HtmlDocument] $HtmlDocument = $HtmlWeb.Load($url)
+
+            # try {
+            #     $Content = (Invoke-WebRequest -Uri $UrL -ErrorAction Stop).Content
+            # } catch {
+            #     Write-Warning "ConvertFrom-HTMLTableAgilityPack - Error loading $Url. Errror: $($_.Exception.Message)"
+            #     return
+            # }
+            # [HtmlAgilityPack.HtmlDocument] $HtmlDocument = [HtmlAgilityPack.HtmlDocument]::new()
+            # $HtmlDocument.LoadHtml($Content)
         }
         [Array] $Tables = $HtmlDocument.DocumentNode.SelectNodes("//table")
 
