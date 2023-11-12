@@ -15,4 +15,9 @@
         $AllTables[0][1].a2 = 'c2'
         $AllTables[0][1].a3 = 'c3'
     }
+    It 'Given a HTML Page with Tables' {
+        $AllTables = ConvertFrom-HtmlTable -Url 'https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/licensing-service-plan-reference'
+        # There are 9 tables
+        $AllTables.Count | Should -Be 9
+    }
 }
