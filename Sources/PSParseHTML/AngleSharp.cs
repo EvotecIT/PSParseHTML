@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
-using AngleSharp.Js;
+//using AngleSharp.Js;
 
 namespace PSParseHTML {
     public class AngleSharp {

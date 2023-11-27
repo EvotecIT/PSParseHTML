@@ -29,9 +29,11 @@ public class OnModuleImportAndRemove : IModuleAssemblyInitializer, IModuleAssemb
 
         var assemblyList = new List<(string, string)>
         {
-            ("AngleSharp,", "AngleSharp.dll"),
             ("AngleSharp.Css,", "AngleSharp.Css.dll"),
-            ("System.Text.Encoding.CodePages,", "System.Text.Encoding.CodePages.dll")
+            ("AngleSharp,", "AngleSharp.dll"),
+            ("System.Text.Encoding.CodePages,", "System.Text.Encoding.CodePages.dll"),
+            ("System.Buffers,", "System.Buffers.dll"),
+            ("Microsoft.Bcl.AsyncInterfaces,", "Microsoft.Bcl.AsyncInterfaces.dll")
         };
 
         foreach (var assembly in assemblyList) {
@@ -40,6 +42,7 @@ public class OnModuleImportAndRemove : IModuleAssemblyInitializer, IModuleAssemb
                 return Assembly.LoadFile(binaryPath);
             }
         }
+
         return null;
     }
 }

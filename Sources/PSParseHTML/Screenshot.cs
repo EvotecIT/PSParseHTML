@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using PuppeteerSharp;
+//using PuppeteerSharp;
 
 namespace PSParseHTML {
     //    public class ScreenShot {
