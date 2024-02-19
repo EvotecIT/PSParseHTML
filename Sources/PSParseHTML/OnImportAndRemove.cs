@@ -4,16 +4,29 @@ using System.Management.Automation;
 using System.Reflection;
 
 public class OnModuleImportAndRemove : IModuleAssemblyInitializer, IModuleAssemblyCleanup {
+    //public void OnImport() {
+    //    //#if FRAMEWORK
+    //    AppDomain.CurrentDomain.AssemblyResolve += MyResolveEventHandler;
+    //    //#endif
+    //}
+
+    //public void OnRemove(PSModuleInfo module) {
+    //    //#if FRAMEWORK
+    //    AppDomain.CurrentDomain.AssemblyResolve -= MyResolveEventHandler;
+    //    //#endif
+    //}
+
+
     public void OnImport() {
-        //#if FRAMEWORK
-        AppDomain.CurrentDomain.AssemblyResolve += MyResolveEventHandler;
-        //#endif
+        if (IsNetFramework()) {
+            AppDomain.CurrentDomain.AssemblyResolve += MyResolveEventHandler;
+        }
     }
 
     public void OnRemove(PSModuleInfo module) {
-        //#if FRAMEWORK
-        AppDomain.CurrentDomain.AssemblyResolve -= MyResolveEventHandler;
-        //#endif
+        if (IsNetFramework()) {
+            AppDomain.CurrentDomain.AssemblyResolve -= MyResolveEventHandler;
+        }
     }
 
     private static Assembly MyResolveEventHandler(object sender, ResolveEventArgs args) {
@@ -54,7 +67,21 @@ public class OnModuleImportAndRemove : IModuleAssemblyInitializer, IModuleAssemb
                 return Assembly.LoadFile(file);
             }
         }
-
         return null;
+    }
+
+    private bool IsNetFramework() {
+        return System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.StartsWith(".NET Framework", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool IsNetCore() {
+        return System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.StartsWith(".NET Core", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private bool IsNet5OrHigher() {
+        return System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.StartsWith(".NET 5", StringComparison.OrdinalIgnoreCase) ||
+               System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.StartsWith(".NET 6", StringComparison.OrdinalIgnoreCase) ||
+               System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.StartsWith(".NET 7", StringComparison.OrdinalIgnoreCase) ||
+               System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription.StartsWith(".NET 8", StringComparison.OrdinalIgnoreCase);
     }
 }
