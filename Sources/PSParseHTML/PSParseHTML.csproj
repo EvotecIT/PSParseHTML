@@ -1,31 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <Company>Evotec</Company>
-    <Authors>Przemyslaw Klys</Authors>
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <TargetFrameworks>net472;netstandard2.0;net6.0;net7.0</TargetFrameworks>
-    <AssemblyName>PSParseHTML</AssemblyName>
+	<PropertyGroup>
+		<Company>Evotec</Company>
+		<Authors>Przemyslaw Klys</Authors>
+		<VersionPrefix>1.0.0</VersionPrefix>
+		<TargetFrameworks>net472;netstandard2.0;net6.0;net7.0</TargetFrameworks>
+		<AssemblyName>PSParseHTML</AssemblyName>
 
-    <Copyright>(c) 2011 - 2022 Przemyslaw Klys @ Evotec. All rights reserved.</Copyright>
-    <LangVersion>10.0</LangVersion>
-  </PropertyGroup>
+		<Copyright>(c) 2011 - 2022 Przemyslaw Klys @ Evotec. All rights reserved.</Copyright>
+		<LangVersion>10.0</LangVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AngleSharp" Version="1.0.7" />
-    <PackageReference Include="AngleSharp.Css" Version="1.0.0-alpha-99" />
-    <PackageReference Include="AngleSharp.Diffing" Version="0.18.2" />
-    <PackageReference Include="AngleSharp.Js" Version="0.15.0" />
-    <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
-    <PackageReference Include="Jsbeautifier" Version="0.0.1" />
-    <PackageReference Include="NUglify" Version="1.21.0" />
-    <PackageReference Include="PowerShellStandard.Library" Version="5.1.1" />
-    <PackageReference Include="Selenium.WebDriver" Version="4.15.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AngleSharp" Version="1.0.7" />
+		<PackageReference Include="AngleSharp.Css" Version="1.0.0-alpha-99" />
+		<PackageReference Include="AngleSharp.Diffing" Version="0.18.2" />
+		<PackageReference Include="AngleSharp.Js" Version="0.15.0" />
+		<!-- <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" /> -->
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
+		<PackageReference Include="Jsbeautifier" Version="0.0.1" />
+		<PackageReference Include="NUglify" Version="1.21.4" />
+		<PackageReference Include="PowerShellStandard.Library" Version="5.1.1" PrivateAssets="all" />
+		<PackageReference Include="PreMailer.Net" Version="2.5.0" />
+		<!-- <PackageReference Include="Selenium.WebDriver" Version="4.16.2" /> -->
+	</ItemGroup>
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'net472' ">
-    <DefineConstants>$(DefineConstants);FRAMEWORK</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net472' ">
+		<DefineConstants>$(DefineConstants);FRAMEWORK</DefineConstants>
+	</PropertyGroup>
 
 </Project>
