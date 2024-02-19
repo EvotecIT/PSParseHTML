@@ -1,8 +1,9 @@
 ﻿function ConvertFrom-HTMLAttributes {
     [alias('ConvertFrom-HTMLTag', 'ConvertFrom-HTMLClass')]
-    [cmdletbinding()]
+    [cmdletbinding(DefaultParameterSetName = 'Uri')]
     param (
-        [Parameter(Mandatory = $true)][Array] $Content,
+        [Parameter(Mandatory, ParameterSetName = 'Content', ValueFromPipeline, ValueFromPipelineByPropertyName)][string]$Content,
+        [alias('Uri')][Parameter(Mandatory, ParameterSetName = 'Uri')][Uri] $Url,
         [string] $Tag,
         [string] $Class,
         [string] $Id,
@@ -11,11 +12,19 @@
     )
     Begin {
         # Initialize the parser
+        $TemporaryProgress = $ProgressPreference
+        $ProgressPreference = 'SilentlyContinue'
         $HTMLParser = [AngleSharp.Html.Parser.HtmlParser]::new()
     }
     Process {
         # Load the html
-        $ParsedDocument = $HTMLParser.ParseDocument($content)
+        if ($Url) {
+            $Content = (Invoke-WebRequest -Uri $Url).Content
+        }
+        if (-not $Content) {
+            return
+        }
+        $ParsedDocument = $HTMLParser.ParseDocument($Content)
         # Get all the tables
         if ($Tag) {
             [Array] $OutputContent = $ParsedDocument.GetElementsByTagName($Tag)
@@ -34,5 +43,10 @@
             }
         }
     }
-    End { }
+    End {
+        # Clean up
+        $ParsedDocument = $null
+        $HTMLParser = $null
+        $ProgressPreference = $TemporaryProgress
+    }
 }

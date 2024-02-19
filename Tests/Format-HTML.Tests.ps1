@@ -1,18 +1,20 @@
-﻿#Requires -Modules Pester
-Import-Module $PSScriptRoot\..\PSParseHTML.psd1
-
-Describe 'Format-HTML' {
+﻿Describe 'Format-HTML' {
     It 'Given minified HTML content - Should Format it' {
         $ExpectedOutput = @"
-<html><!-- HEADER -->
+<html>
+    <!-- HEADER -->
     <head>
         <meta charset="utf-8" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta name="author" />
         <meta content="2019-08-09 11:26:37" name="revised" />
-        <title>My title</title><!-- CSS Default fonts START -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto|Hammersmith+One|Questrial|Oswald" type="text/css" rel="stylesheet" /><!-- CSS Default fonts END --><!-- CSS Default fonts icons START -->
-        <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" type="text/css" rel="stylesheet" /><!-- CSS Default fonts icons END -->
+        <title>My title</title>
+        <!-- CSS Default fonts START -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto|Hammersmith+One|Questrial|Oswald" type="text/css" rel="stylesheet" />
+        <!-- CSS Default fonts END -->
+        <!-- CSS Default fonts icons START -->
+        <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" type="text/css" rel="stylesheet" />
+        <!-- CSS Default fonts icons END -->
         <div class="flexElement overflowHidden">
             <table id="DT-hZRTQIVT" class="display compact">
                 <thead>
@@ -38,8 +40,11 @@ Describe 'Format-HTML' {
                     </tr>
                 </tbody>
             </table>
-        </div><!-- END BODY --><!-- FOOTER -->
-        <footer></footer><!-- END FOOTER -->
+        </div>
+        <!-- END BODY -->
+        <!-- FOOTER -->
+        <footer></footer>
+        <!-- END FOOTER -->
     </head>
 </html>
 "@.Replace("`r`n", "`n")
@@ -162,11 +167,11 @@ Describe 'Format-HTML' {
                 font-size: 130%
             }
             a.paginate_button {
-                color: #000 !important;
+                color: #000!important;
                 font-size: 10px
             }
             a.current {
-                color: #000 !important
+                color: #000!important
             }
         </style>
         <link href="https://fonts.googleapis.com/css?family=Roboto|Hammersmith+One|Questrial|Oswald" type="text/css" rel="stylesheet" />
