@@ -94,7 +94,7 @@ Build-Module -ModuleName 'PSParseHTML' {
         #SeparateFileLibraries             = $true
         #DeleteTargetModuleBeforeBuild     = $true
 
-        #ResolveBinaryConflicts            = $true
+        ResolveBinaryConflicts            = $true
         ResolveBinaryConflictsName        = 'PSParseHTML'
         NETProjectName                    = 'PSParseHTML'
         NETConfiguration                  = 'Release'
