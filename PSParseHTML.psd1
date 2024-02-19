@@ -9,7 +9,7 @@
     DotNetFrameworkVersion = '4.7.2'
     FunctionsToExport      = @('Convert-HTMLToText', 'ConvertFrom-HTML', 'ConvertFrom-HTMLAttributes', 'ConvertFrom-HtmlTable', 'Format-CSS', 'Format-HTML', 'Format-JavaScript', 'Optimize-CSS', 'Optimize-HTML', 'Optimize-JavaScript')
     GUID                   = 'f0387960-7034-4918-a1e1-d5847cbf90df'
-    ModuleVersion          = '0.0.26'
+    ModuleVersion          = '1.0.0'
     PowerShellVersion      = '5.1'
     PrivateData            = @{
         PSData = @{
