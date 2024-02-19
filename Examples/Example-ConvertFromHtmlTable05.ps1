@@ -3,7 +3,7 @@ Import-Module .\PSParseHTML.psd1 -Force
 
 $AllTables = ConvertFrom-HtmlTable -Url 'https://docs.microsoft.com/en-us/azure/active-directory/enterprise-users/licensing-service-plan-reference'
 # There are 9 tables
-#$AllTables[0] | Format-Table
+$AllTables[0] | Format-Table
 
 [string] $Licenses = @(
     "   `$O365SKU = @{" + [System.Environment]::NewLine

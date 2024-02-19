@@ -42,7 +42,8 @@
         [switch] $Raw
     )
     Begin {
-
+        $TemporaryProgress = $ProgressPreference
+        $ProgressPreference = 'SilentlyContinue'
     }
     Process {
         if ($Engine -eq 'AngleSharp') {
@@ -81,5 +82,6 @@
         $ParsedDocument = $null
         $HtmlDocument = $null
         $HTMLParser = $null
+        $ProgressPreference = $TemporaryProgress
     }
 }
