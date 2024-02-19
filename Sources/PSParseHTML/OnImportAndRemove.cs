@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Management.Automation;
 using System.Reflection;
@@ -18,28 +17,41 @@ public class OnModuleImportAndRemove : IModuleAssemblyInitializer, IModuleAssemb
     }
 
     private static Assembly MyResolveEventHandler(object sender, ResolveEventArgs args) {
-        //if (args.Name.StartsWith("AngleSharp,")) {
-        //    string binPath = Path.Combine(Path.GetDirectoryName(typeof(OnModuleImportAndRemove).Assembly.Location), "AngleSharp.dll");
-        //    return Assembly.LoadFile(binPath);
-        //} else if (args.Name.StartsWith("AngleSharp.Css,")) {
-        //    string binPath = Path.Combine(Path.GetDirectoryName(typeof(OnModuleImportAndRemove).Assembly.Location), "AngleSharp.Css.dll");
-        //    return Assembly.LoadFile(binPath);
+        //var assemblyList = new List<(string, string)>
+        //{
+        //    ("AngleSharp.Css,", "AngleSharp.Css.dll"),
+        //    ("AngleSharp,", "AngleSharp.dll"),
+        //    ("System.Text.Encoding.CodePages,", "System.Text.Encoding.CodePages.dll"),
+        //    ("System.Buffers,", "System.Buffers.dll"),
+        //    ("Microsoft.Bcl.AsyncInterfaces,", "Microsoft.Bcl.AsyncInterfaces.dll"),
+        //    ("System.Memory,", "System.Memory.dll"),
+        //    ("System.Numerics.Vectors,", "System.Numerics.Vectors.dll"),
+        //    ("System.Runtime.CompilerServices.Unsafe,", "System.Runtime.CompilerServices.Unsafe.dll"),
+        //    ("System.Threading.Tasks.Extensions,", "System.Threading.Tasks.Extensions.dll"),
+        //    ("System.Memory,", "System.Memory.dll"),
+        //};
+
+        //foreach (var assembly in assemblyList) {
+        //    if (args.Name.StartsWith(assembly.Item1)) {
+        //        var binaryPath = Path.Combine(Path.GetDirectoryName(typeof(OnModuleImportAndRemove).Assembly.Location), assembly.Item2);
+        //        return Assembly.LoadFile(binaryPath);
+        //    }
         //}
 
+        //return null;
 
-        var assemblyList = new List<(string, string)>
-        {
-            ("AngleSharp.Css,", "AngleSharp.Css.dll"),
-            ("AngleSharp,", "AngleSharp.dll"),
-            ("System.Text.Encoding.CodePages,", "System.Text.Encoding.CodePages.dll"),
-            ("System.Buffers,", "System.Buffers.dll"),
-            ("Microsoft.Bcl.AsyncInterfaces,", "Microsoft.Bcl.AsyncInterfaces.dll")
-        };
+        //This code is used to resolve the assemblies
+        //Console.WriteLine($"Resolving {args.Name}");
+        var directoryPath = Path.GetDirectoryName(typeof(OnModuleImportAndRemove).Assembly.Location);
+        var filesInDirectory = Directory.GetFiles(directoryPath);
 
-        foreach (var assembly in assemblyList) {
-            if (args.Name.StartsWith(assembly.Item1)) {
-                var binaryPath = Path.Combine(Path.GetDirectoryName(typeof(OnModuleImportAndRemove).Assembly.Location), assembly.Item2);
-                return Assembly.LoadFile(binaryPath);
+        foreach (var file in filesInDirectory) {
+            var fileName = Path.GetFileName(file);
+            var assemblyName = Path.GetFileNameWithoutExtension(file);
+
+            if (args.Name.StartsWith(assemblyName)) {
+                //Console.WriteLine($"Loading {args.Name} assembly {fileName}");
+                return Assembly.LoadFile(file);
             }
         }
 
