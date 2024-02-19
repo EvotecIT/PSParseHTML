@@ -1,5 +1,8 @@
 ﻿## ChangeLog
 
+#### 1.0.2 - 2024.02.19
+- Better detection of net framework
+
 #### 1.0.1 - 2024.02.19
 - Again refreshed dependencies
 
