@@ -12,12 +12,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AngleSharp" Version="1.0.7" />
+		<PackageReference Include="AngleSharp" Version="1.1.0" />
 		<PackageReference Include="AngleSharp.Css" Version="1.0.0-alpha-99" />
 		<PackageReference Include="AngleSharp.Diffing" Version="0.18.2" />
 		<PackageReference Include="AngleSharp.Js" Version="0.15.0" />
 		<!-- <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" /> -->
-		<PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.59" />
 		<PackageReference Include="Jsbeautifier" Version="0.0.1" />
 		<PackageReference Include="NUglify" Version="1.21.4" />
 		<PackageReference Include="PowerShellStandard.Library" Version="5.1.1" PrivateAssets="all" />
